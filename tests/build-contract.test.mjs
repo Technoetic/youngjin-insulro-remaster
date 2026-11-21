@@ -48,25 +48,39 @@ test('dist build artifacts satisfy GitHub Pages subpath, zero legacy bugs, and 1
   assert.doesNotMatch(companyAndProducts, /축전된 노하우/);
   assert.doesNotMatch(html, /flag-kr/i, 'KR flag image must be completely removed');
   assert.doesNotMatch(html, /ci-plate-flag/, 'Flag tile must be removed from CI marquee');
-  assert.doesNotMatch(html, /ci-incheon\.svg/, 'Old Incheon SVG must be replaced with attached PNG');
-  assert.match(html, /ci-incheon\.png/);
   assert.doesNotMatch(html, /ci-youngjin-color/i, 'Color boxed Youngjin CI must be removed');
   assert.doesNotMatch(catalogRaw, /ci-youngjin-color/i, 'Color boxed Youngjin CI must not exist in catalog');
   assert.match(html, /ci-youngjin-white\.png/, 'Authentic white Youngjin CI must be wired across header, showcase, and footer');
-  assert.match(html, /ci-haccp\.png/, 'Official Korean HACCP CI must be featured');
-  assert.doesNotMatch(html, /class="brand-hex"/, 'Custom line-art brand-hex SVG must be replaced with official CI');
-  for (const partnerSlug of [
-    'partner-samlip.png',
-    'partner-parisbaguette.png',
-    'partner-pariscroissant.png',
-    'partner-aj.png',
-    'partner-lottesamgang.png',
-    'partner-binggrae.png',
-    'partner-cjcheiljedang.png',
-    'partner-pulmuone.png',
-    'partner-cjfreshway.png'
-  ]) {
-    assert.match(html, new RegExp(partnerSlug.replace('.', '\\.')), `Missing partner CI: ${partnerSlug}`);
+
+  // All 17 institutional & partner CIs must be pure vector SVGs with zero embedded raster <image> tags
+  const vectorCis = [
+    'ci-haccp.svg',
+    'ci-incheon.svg',
+    'ci-suhyup.svg',
+    'ci-at.svg',
+    'ci-garak.svg',
+    'ci-gamaco.svg',
+    'ci-incheon-cci.svg',
+    'ci-kicox.svg',
+    'partner-samlip.svg',
+    'partner-parisbaguette.svg',
+    'partner-pariscroissant.svg',
+    'partner-aj.svg',
+    'partner-lottesamgang.svg',
+    'partner-binggrae.svg',
+    'partner-cjcheiljedang.svg',
+    'partner-pulmuone.svg',
+    'partner-cjfreshway.svg'
+  ];
+  for (const slug of vectorCis) {
+    assert.match(html, new RegExp(slug.replace('.', '\\.')), `Missing pure vector CI: ${slug}`);
+  }
+  for (const [k, url] of Object.entries(catalog.media)) {
+    if ((k.startsWith('ci') && k !== 'ciYoungjinWhite') || k.startsWith('partner')) {
+      assert.match(url, /\.svg$/, `CI asset ${k} must be vector SVG, got ${url}`);
+      const svgBody = await readFile(path.join(dist, url.replace(/^\.\//, '')), 'utf8');
+      assert.doesNotMatch(svgBody, /<image\b|base64,/i, `Vector SVG ${k} must not embed raster images`);
+    }
   }
   assert.doesNotMatch(catalogRaw, /flag-kr/i, 'KR flag image must not exist in catalog');
   assert.doesNotMatch(html, /class="ci-meta"/, 'CI marquee must display pure CI images only');

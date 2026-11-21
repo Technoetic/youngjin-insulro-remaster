@@ -855,6 +855,12 @@
   padding: 9px 20px;
 }
 
+.ci-logo-tile.ci-plate-wide {
+  min-width: 232px;
+  max-width: 268px;
+  padding: 12px 22px;
+}
+
 .ci-logo-tile img {
   height: 38px;
   max-width: 204px;
@@ -867,7 +873,14 @@
 }
 
 .ci-logo-tile.ci-plate-tall img {
-  height: 48px;
+  height: 50px;
+}
+
+.ci-logo-tile.ci-plate-wide img {
+  height: auto;
+  max-height: 30px;
+  width: 214px;
+  max-width: 214px;
 }
 
 /* ==========================================================================
