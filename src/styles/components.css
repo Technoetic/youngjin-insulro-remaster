@@ -17,6 +17,58 @@
   border-bottom-color: var(--border-cryo);
 }
 
+/* A thin cold-to-warm reading line follows native document scrolling. */
+@media screen and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll(root block)) {
+    .site-header::after {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      inset: auto 0 -1px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cryo-deep), var(--cryo) 72%, var(--heat-bright));
+      transform-origin: left;
+      animation: scroll-reading-progress linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+
+  [data-reveal].scroll-enter {
+    animation: scroll-reveal-rise 560ms var(--ease-expo) backwards;
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+
+  [data-reveal="image"].scroll-enter {
+    animation-name: scroll-reveal-image;
+    animation-duration: 740ms;
+  }
+
+  [data-reveal].scroll-enter:focus-within {
+    animation: none;
+  }
+}
+
+@media (min-width: 821px) {
+  :is(.visual-triptych, .product-grid, .haccp-pillars) > :nth-child(2) { --reveal-delay: 70ms; }
+  :is(.visual-triptych, .product-grid, .haccp-pillars) > :nth-child(3) { --reveal-delay: 140ms; }
+  .haccp-pillars > :nth-child(4) { --reveal-delay: 200ms; }
+}
+
+@keyframes scroll-reading-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes scroll-reveal-rise {
+  from { opacity: 0.2; translate: 0 22px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+@keyframes scroll-reveal-image {
+  from { opacity: 0.45; clip-path: inset(0 0 17% 0); }
+  to { opacity: 1; clip-path: inset(0); }
+}
+
 .header-inner {
   height: 100%;
   display: flex;
@@ -210,6 +262,22 @@
   inset: 0;
   z-index: -4;
   overflow: hidden;
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  @supports (animation-range: exit 0% exit 100%) and (view-timeline-name: --cinema) {
+    .cinema-hero { view-timeline-name: --cinema; }
+    .cinema-reel {
+      animation: cinema-scroll-exit linear both;
+      animation-timeline: --cinema;
+      animation-range: exit 0% exit 100%;
+    }
+  }
+}
+
+@keyframes cinema-scroll-exit {
+  from { translate: 0 0; }
+  to { translate: 0 10%; }
 }
 
 .cinema-slide {

@@ -2,6 +2,7 @@ import { CatalogService } from '../services/catalog-service.js';
 import { VersionService } from '../services/version-service.js';
 import { QuoteService } from '../services/quote-service.js';
 import { HeroVisualEngine } from './hero-visual-engine.js';
+import { ScrollReveals } from './scroll-reveals.js';
 import {
   escapeHtml,
   formatNumber,
@@ -23,6 +24,7 @@ export class RemasterScreen {
   #quoteService;
   #heroEngine = null;
   #events = new AbortController();
+  #scrollReveals;
   #catalog = null;
   #disposed = false;
   #loadGen = 0;
@@ -48,6 +50,8 @@ export class RemasterScreen {
 
   async mount() {
     const signal = this.#events.signal;
+    this.#scrollReveals = new ScrollReveals(signal);
+    this.#scrollReveals.refresh();
     this.#initialDeepLink = Boolean(location.hash && parseRoute(location.hash).section !== 'hero');
 
     // 1. Start Pure Visual Cinema Hero Engine (auto-playing 3-poster IMAX reel + ember/frost atmosphere)
@@ -291,6 +295,7 @@ export class RemasterScreen {
     this.#renderTrackRecords();
     this.#renderTimeline();
     this.#renderAuditModal();
+    this.#scrollReveals.refresh();
   }
 
   #renderCutaway() {
@@ -384,7 +389,7 @@ export class RemasterScreen {
     const cardsHtml = cat.items
       .map(
         item => `
-        <article class="product-card">
+        <article class="product-card" data-reveal>
           <div>
             <div class="product-card-top">
               <span class="product-badge">${escapeHtml(item.badge)}</span>
@@ -408,7 +413,7 @@ export class RemasterScreen {
       .join('');
 
     mount.innerHTML = `
-      <div class="category-banner">
+      <div class="category-banner" data-reveal="image">
         <img src="${escapeHtml(cat.heroImage)}" alt="${escapeHtml(cat.name)} 시네마 대표 이미지" loading="lazy">
         <div class="category-banner-content">
           <span class="section-eyebrow">${escapeHtml(cat.code)} · ${escapeHtml(cat.enName)}</span>
@@ -476,7 +481,7 @@ export class RemasterScreen {
               .join('')}</div>`
           : '';
         return `
-        <article class="timeline-item">
+        <article class="timeline-item" data-reveal>
           <div class="timeline-head-row">
             <div class="timeline-year">${escapeHtml(item.year)}</div>
             ${badgesHtml}
@@ -697,6 +702,7 @@ export class RemasterScreen {
         this.#activeCategory = targetCat;
         this.#renderCategoryTabs();
         this.#renderProducts();
+        this.#scrollReveals.refresh();
       }
     }
 
