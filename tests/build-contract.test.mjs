@@ -47,6 +47,9 @@ test('dist build artifacts satisfy GitHub Pages subpath, zero legacy bugs, and 1
   assert.doesNotMatch(companyAndProducts, /제철소/);
   assert.doesNotMatch(companyAndProducts, /축전된 노하우/);
   assert.doesNotMatch(html, /flag-kr/i, 'KR flag image must be completely removed');
+  assert.doesNotMatch(html, /ci-plate-flag/, 'Flag tile must be removed from CI marquee');
+  assert.doesNotMatch(html, /ci-incheon\.svg/, 'Old Incheon SVG must be replaced with attached PNG');
+  assert.match(html, /ci-incheon\.png/);
   assert.doesNotMatch(catalogRaw, /flag-kr/i, 'KR flag image must not exist in catalog');
   assert.doesNotMatch(html, /class="ci-meta"/, 'CI marquee must display pure CI images only');
   assert.match(html, /data-count-to="-40"/);

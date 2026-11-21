@@ -42,7 +42,7 @@ const sourceMedia = [
   ['door-cutaway.jpg', 'DOOR_CUTAWAY_URL'],
   ['panel-corridor.jpg', 'PANEL_CORRIDOR_URL'],
   ['dock-equipment.jpg', 'DOCK_EQUIPMENT_URL'],
-  ['ci/ci-incheon.svg', 'CI_INCHEON_URL'],
+  ['ci/ci-incheon.png', 'CI_INCHEON_URL'],
   ['ci/ci-suhyup.svg', 'CI_SUHYUP_URL'],
   ['ci/ci-at.png', 'CI_AT_URL'],
   ['ci/ci-garak.svg', 'CI_GARAK_URL'],
