@@ -42,6 +42,10 @@ const sourceMedia = [
   ['door-cutaway.jpg', 'DOOR_CUTAWAY_URL'],
   ['panel-corridor.jpg', 'PANEL_CORRIDOR_URL'],
   ['dock-equipment.jpg', 'DOCK_EQUIPMENT_URL'],
+  ['ci/ci-youngjin-color.png', 'CI_YOUNGJIN_COLOR_URL'],
+  ['ci/ci-youngjin-white.png', 'CI_YOUNGJIN_WHITE_URL'],
+  ['ci/ci-youngjin-mark-white.png', 'CI_YOUNGJIN_MARK_WHITE_URL'],
+  ['ci/ci-haccp.png', 'CI_HACCP_URL'],
   ['ci/ci-incheon.png', 'CI_INCHEON_URL'],
   ['ci/ci-suhyup.svg', 'CI_SUHYUP_URL'],
   ['ci/ci-at.png', 'CI_AT_URL'],
@@ -49,7 +53,16 @@ const sourceMedia = [
   ['ci/ci-gamaco.png', 'CI_GAMACO_URL'],
   ['ci/ci-incheon-cci.png', 'CI_INCHEON_CCI_URL'],
   ['ci/ci-kicox.svg', 'CI_KICOX_URL'],
-  ['ci/flag-it.svg', 'FLAG_IT_URL']
+  ['ci/flag-it.svg', 'FLAG_IT_URL'],
+  ['ci/partner-samlip.png', 'PARTNER_SAMLIP_URL'],
+  ['ci/partner-parisbaguette.png', 'PARTNER_PARISBAGUETTE_URL'],
+  ['ci/partner-pariscroissant.png', 'PARTNER_PARISCROISSANT_URL'],
+  ['ci/partner-aj.png', 'PARTNER_AJ_URL'],
+  ['ci/partner-lottesamgang.png', 'PARTNER_LOTTESAMGANG_URL'],
+  ['ci/partner-binggrae.png', 'PARTNER_BINGGRAE_URL'],
+  ['ci/partner-cjcheiljedang.png', 'PARTNER_CJCHEILJEDANG_URL'],
+  ['ci/partner-pulmuone.png', 'PARTNER_PULMUONE_URL'],
+  ['ci/partner-cjfreshway.png', 'PARTNER_CJFRESHWAY_URL']
 ];
 
 const media = {};

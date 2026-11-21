@@ -23,6 +23,10 @@
     "doorCutaway": "{{DOOR_CUTAWAY_URL}}",
     "panelCorridor": "{{PANEL_CORRIDOR_URL}}",
     "dockEquipment": "{{DOCK_EQUIPMENT_URL}}",
+    "ciYoungjinColor": "{{CI_YOUNGJIN_COLOR_URL}}",
+    "ciYoungjinWhite": "{{CI_YOUNGJIN_WHITE_URL}}",
+    "ciYoungjinMarkWhite": "{{CI_YOUNGJIN_MARK_WHITE_URL}}",
+    "ciHaccp": "{{CI_HACCP_URL}}",
     "ciIncheon": "{{CI_INCHEON_URL}}",
     "ciSuhyup": "{{CI_SUHYUP_URL}}",
     "ciAt": "{{CI_AT_URL}}",
@@ -30,7 +34,16 @@
     "ciGamaco": "{{CI_GAMACO_URL}}",
     "ciIncheonCci": "{{CI_INCHEON_CCI_URL}}",
     "ciKicox": "{{CI_KICOX_URL}}",
-    "flagIt": "{{FLAG_IT_URL}}"
+    "flagIt": "{{FLAG_IT_URL}}",
+    "partnerSamlip": "{{PARTNER_SAMLIP_URL}}",
+    "partnerParisbaguette": "{{PARTNER_PARISBAGUETTE_URL}}",
+    "partnerPariscroissant": "{{PARTNER_PARISCROISSANT_URL}}",
+    "partnerAj": "{{PARTNER_AJ_URL}}",
+    "partnerLottesamgang": "{{PARTNER_LOTTESAMGANG_URL}}",
+    "partnerBinggrae": "{{PARTNER_BINGGRAE_URL}}",
+    "partnerCjcheiljedang": "{{PARTNER_CJCHEILJEDANG_URL}}",
+    "partnerPulmuone": "{{PARTNER_PULMUONE_URL}}",
+    "partnerCjfreshway": "{{PARTNER_CJFRESHWAY_URL}}"
   },
   "thicknessProfiles": [
     {
@@ -580,9 +593,9 @@
       "after": "2025~2026 공공계약 검증 레퍼런스 + 인터랙티브 6층 구조 단면도 + 실시간 견적 사양서 생성기 탑재"
     },
     {
-      "area": "과장·허위 인증 배제 원칙",
-      "before": "규제·인증 경계 설명 부재(미확인 인증·동명이인 특허·미확인 민간고객 혼동 위험)",
-      "after": "미확인 KS/ISO/준불연 인증, 타사(동명이인) 특허 및 미확인 민간 고객사를 과장 표기하지 않고 공공 검증 사실과 건축법 사전 협의 안내만 정직하게 반영"
+      "area": "HACCP 위생 어필·협력사 복원 & 과장 배제",
+      "before": "상단 CI·고객협력사 10개사 배치가 분산되어 있었고, 건축법 복합자재 기준 및 검증 경계 안내가 누락됨",
+      "after": "영진인슈로산업(주) 원본 CI('HACCP적용업체')와 원 사이트 고객협력사 10개사·공공계약 기관 CI를 전면 복원하고, 미확인 KS/ISO/타사 특허 과장을 배제한 정직한 기준을 반영"
     }
   ]
 }

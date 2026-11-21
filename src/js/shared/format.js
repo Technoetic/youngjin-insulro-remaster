@@ -25,6 +25,7 @@ export function parseRoute(hashValue) {
   const [section, sub = ''] = raw.split('/');
   const validSections = new Set([
     'hero',
+    'haccp-standard',
     'engineering',
     'products',
     'track-record',

@@ -20,17 +20,17 @@
   <!-- RAZOR-CLEAN TRANSPARENT CINEMA HEADER -->
   <header id="site-header" class="site-header">
     <div class="container header-inner">
-      <a href="#hero" data-nav class="brand-mark" aria-label="영진인슈로산업(주) 홈">
-        <svg class="brand-hex" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-          <polygon points="32,4 56,18 56,46 32,60 8,46 8,18" stroke="#38E8FF" stroke-width="3" fill="#081428"/>
-          <polygon points="32,11 50,21.5 50,42.5 32,53 14,42.5 14,21.5" stroke="#FF6B2C" stroke-width="1.6" stroke-opacity="0.75" fill="none"/>
-          <path d="M20 20L32 33L44 20M32 33V48" stroke="#F0FAFF" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span class="brand-text">
-          <span class="brand-kicker">EST. 1987 · -40°C THERMAL MONOLITH</span>
-          <span class="brand-name">영진인슈로산업(주)</span>
-        </span>
-      </a>
+      <div class="brand-cluster">
+        <a href="#hero" data-nav class="brand-mark" aria-label="HACCP적용업체 영진인슈로산업(주) 홈">
+          <span class="brand-ci-plate">
+            <img src="{{CI_YOUNGJIN_COLOR_URL}}" alt="HACCP적용업체 영진인슈로산업(주) 공식 CI">
+          </span>
+        </a>
+        <a href="#haccp-standard" data-nav class="header-haccp-badge" title="HACCP 적용업체 · 식품위생 방열 설비 기준 보기">
+          <img src="{{CI_HACCP_URL}}" alt="안전관리인증 HACCP 공식 마크">
+          <span>HACCP 적용업체</span>
+        </a>
+      </div>
 
       <nav id="site-nav" class="site-nav" aria-label="주요 메뉴">
         <a href="#hero" data-nav aria-current="location">홈</a>
@@ -86,10 +86,16 @@
 
       <!-- Minimal Edge Film-Poster Framing -->
       <div class="container cinema-top-strip">
-        <span class="cinema-kicker-tag">
-          <span class="live-dot" aria-hidden="true"></span>
-          <span>YOUNGJIN INSULRO · EST. <span class="count-num" data-count-from="2026" data-count-to="1987" data-count-duration="1250">1987</span> · INCHEON NAMDONG <span class="count-num" data-count-from="0" data-count-to="37" data-count-duration="1000">37</span>B-<span class="count-num" data-count-from="0" data-count-to="6" data-count-duration="900">6</span>L</span>
-        </span>
+        <div class="cinema-top-badges">
+          <span class="cinema-kicker-tag">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span>YOUNGJIN INSULRO · EST. <span class="count-num" data-count-from="2026" data-count-to="1987" data-count-duration="1250">1987</span> · INCHEON NAMDONG <span class="count-num" data-count-from="0" data-count-to="37" data-count-duration="1000">37</span>B-<span class="count-num" data-count-from="0" data-count-to="6" data-count-duration="900">6</span>L</span>
+          </span>
+          <a href="#haccp-standard" data-nav class="cinema-haccp-pill">
+            <img src="{{CI_HACCP_URL}}" alt="HACCP 공식 마크">
+            <span>HACCP 적용업체 · SUS 0.8T 위생 방열 설비</span>
+          </a>
+        </div>
         <span class="cinema-temp-axis mono" aria-hidden="true">
           <span class="axis-cryo"><span class="count-num" data-count-from="0" data-count-to="-40" data-count-duration="1300">-40</span>°C CRYO</span>
           <span class="axis-bar axis-bar-cryo"><span class="axis-pulse axis-pulse-cryo"></span></span>
@@ -210,10 +216,12 @@
       </article>
     </section>
 
-    <!-- PURE OFFICIAL INSTITUTIONAL CI MARQUEE (CI IMAGES ONLY) -->
-    <section class="ci-marquee-section" aria-label="2025~2026 검증 공공계약 기관·경제단체 공식 CI">
+    <!-- PURE OFFICIAL INSTITUTIONAL & PARTNER CI MARQUEE (2 OPPOSING PURE-CI ROWS, ZERO TEXT) -->
+    <section class="ci-marquee-section" aria-label="공공계약 기관·HACCP 및 영진인슈로산업 고객협력사 공식 CI">
+      <!-- Row 1: Public Procurement, Institutional & Official HACCP CIs -->
       <div class="ci-track-mask">
         <div class="ci-track">
+          <span class="ci-logo-tile ci-plate-square" title="안전관리인증 HACCP (식품의약품안전처)"><img src="{{CI_HACCP_URL}}" alt="안전관리인증 HACCP 공식 마크"></span>
           <span class="ci-logo-tile" title="인천광역시"><img src="{{CI_INCHEON_URL}}" alt="인천광역시 공식 CI"></span>
           <span class="ci-logo-tile" title="수협중앙회"><img src="{{CI_SUHYUP_URL}}" alt="수협중앙회 공식 CI"></span>
           <span class="ci-logo-tile" title="한국농수산식품유통공사 aT"><img src="{{CI_AT_URL}}" alt="한국농수산식품유통공사 aT 공식 CI"></span>
@@ -222,6 +230,7 @@
           <span class="ci-logo-tile" title="인천상공회의소"><img src="{{CI_INCHEON_CCI_URL}}" alt="인천상공회의소 공식 CI"></span>
           <span class="ci-logo-tile" title="한국산업단지공단 남동국가산업단지"><img src="{{CI_KICOX_URL}}" alt="한국산업단지공단 공식 CI"></span>
           <!-- Seamless infinite scroll duplicate -->
+          <span class="ci-logo-tile ci-plate-square" aria-hidden="true"><img src="{{CI_HACCP_URL}}" alt=""></span>
           <span class="ci-logo-tile" aria-hidden="true"><img src="{{CI_INCHEON_URL}}" alt=""></span>
           <span class="ci-logo-tile" aria-hidden="true"><img src="{{CI_SUHYUP_URL}}" alt=""></span>
           <span class="ci-logo-tile" aria-hidden="true"><img src="{{CI_AT_URL}}" alt=""></span>
@@ -229,6 +238,82 @@
           <span class="ci-logo-tile" aria-hidden="true"><img src="{{CI_GAMACO_URL}}" alt=""></span>
           <span class="ci-logo-tile" aria-hidden="true"><img src="{{CI_INCHEON_CCI_URL}}" alt=""></span>
           <span class="ci-logo-tile" aria-hidden="true"><img src="{{CI_KICOX_URL}}" alt=""></span>
+        </div>
+      </div>
+
+      <!-- Row 2: All 10 Customer Partner CIs from youngjininsulro.co.kr -->
+      <div class="ci-track-mask">
+        <div class="ci-track ci-track-reverse">
+          <span class="ci-logo-tile ci-plate-tall" title="SPC 삼립식품"><img src="{{PARTNER_SAMLIP_URL}}" alt="삼립식품 공식 CI"></span>
+          <span class="ci-logo-tile ci-plate-square" title="파리바게트"><img src="{{PARTNER_PARISBAGUETTE_URL}}" alt="파리바게트 공식 CI"></span>
+          <span class="ci-logo-tile ci-plate-tall" title="파리크로와상"><img src="{{PARTNER_PARISCROISSANT_URL}}" alt="파리크로와상 공식 CI"></span>
+          <span class="ci-logo-tile" title="수협"><img src="{{CI_SUHYUP_URL}}" alt="수협 공식 CI"></span>
+          <span class="ci-logo-tile" title="AJ"><img src="{{PARTNER_AJ_URL}}" alt="AJ 공식 CI"></span>
+          <span class="ci-logo-tile" title="롯데삼강 (LOTTE)"><img src="{{PARTNER_LOTTESAMGANG_URL}}" alt="롯데삼강 공식 CI"></span>
+          <span class="ci-logo-tile" title="빙그레"><img src="{{PARTNER_BINGGRAE_URL}}" alt="빙그레 공식 CI"></span>
+          <span class="ci-logo-tile" title="CJ제일제당"><img src="{{PARTNER_CJCHEILJEDANG_URL}}" alt="CJ제일제당 공식 CI"></span>
+          <span class="ci-logo-tile" title="풀무원"><img src="{{PARTNER_PULMUONE_URL}}" alt="풀무원 공식 CI"></span>
+          <span class="ci-logo-tile" title="CJ프레시웨이"><img src="{{PARTNER_CJFRESHWAY_URL}}" alt="CJ프레시웨이 공식 CI"></span>
+          <!-- Seamless infinite scroll duplicate -->
+          <span class="ci-logo-tile ci-plate-tall" aria-hidden="true"><img src="{{PARTNER_SAMLIP_URL}}" alt=""></span>
+          <span class="ci-logo-tile ci-plate-square" aria-hidden="true"><img src="{{PARTNER_PARISBAGUETTE_URL}}" alt=""></span>
+          <span class="ci-logo-tile ci-plate-tall" aria-hidden="true"><img src="{{PARTNER_PARISCROISSANT_URL}}" alt=""></span>
+          <span class="ci-logo-tile" aria-hidden="true"><img src="{{CI_SUHYUP_URL}}" alt=""></span>
+          <span class="ci-logo-tile" aria-hidden="true"><img src="{{PARTNER_AJ_URL}}" alt=""></span>
+          <span class="ci-logo-tile" aria-hidden="true"><img src="{{PARTNER_LOTTESAMGANG_URL}}" alt=""></span>
+          <span class="ci-logo-tile" aria-hidden="true"><img src="{{PARTNER_BINGGRAE_URL}}" alt=""></span>
+          <span class="ci-logo-tile" aria-hidden="true"><img src="{{PARTNER_CJCHEILJEDANG_URL}}" alt=""></span>
+          <span class="ci-logo-tile" aria-hidden="true"><img src="{{PARTNER_PULMUONE_URL}}" alt=""></span>
+          <span class="ci-logo-tile" aria-hidden="true"><img src="{{PARTNER_CJFRESHWAY_URL}}" alt=""></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         HACCP HYGIENE COLD-CHAIN STANDARD SHOWCASE
+         ================================================================ -->
+    <section id="haccp-standard" class="haccp-showcase" aria-label="HACCP 적용업체 식품위생 방열 설비 기준">
+      <div class="container">
+        <div class="haccp-showcase-panel">
+          <div class="haccp-brand-hero">
+            <div class="haccp-seal-pair">
+              <span class="haccp-seal-ring">
+                <img src="{{CI_HACCP_URL}}" alt="안전관리인증 HACCP 공식 마크">
+              </span>
+              <span class="haccp-yj-plate">
+                <img src="{{CI_YOUNGJIN_COLOR_URL}}" alt="HACCP적용업체 영진인슈로산업(주) 공식 CI">
+              </span>
+            </div>
+            <span class="haccp-eyebrow mono">HACCP HYGIENIC COLD-CHAIN ENGINEERING</span>
+            <h2>HACCP 적용업체 — 식품·유가공·축육·수산 위생 설비 표준</h2>
+            <p>
+              영진인슈로산업(주)은 결로·부식·세균 번식을 원천 차단해야 하는 식품 제조·가공·물류 현장에 맞춰
+              방열문부터 위생 판넬·에어커튼까지 <strong>HACCP 위생 기준 중심의 전용 사양</strong>으로 제작·시공합니다.
+            </p>
+          </div>
+
+          <div class="haccp-pillars" aria-label="HACCP 위생 방열 4대 핵심 공학">
+            <article class="haccp-pillar">
+              <span class="mono haccp-pillar-num">HYGIENE 01</span>
+              <h3>SUS 0.8T 올-스테인리스 외피</h3>
+              <p>잦은 고압 물청소와 염분·살균 소독 환경에서도 녹과 도장 박리를 억제하는 위생 강판 적용</p>
+            </article>
+            <article class="haccp-pillar">
+              <span class="mono haccp-pillar-num">HYGIENE 02</span>
+              <h3>항균·방곰팡이 패킹 &amp; 핸들</h3>
+              <p>도어 밀폐 부위의 결로·곰팡이 오염을 줄이는 항균 EPDM 실리콘 패킹 및 항균 손잡이 기본 적용</p>
+            </article>
+            <article class="haccp-pillar">
+              <span class="mono haccp-pillar-num">HYGIENE 03</span>
+              <h3>내한·내충격 합성수지 프레임</h3>
+              <p>목재 부식·위생 우려를 해소하고 -40℃ 저온 취성에 견디는 전용 합성수지 위생 프레임 설계</p>
+            </article>
+            <article class="haccp-pillar">
+              <span class="mono haccp-pillar-num">HYGIENE 04</span>
+              <h3>HACCP 위생 판넬 &amp; 축육 도어</h3>
+              <p>청결구역 구획용 HACCP 위생 판넬·스윙도어·오버헤드 레일 관통 축육용 방열문 원스톱 시공</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -354,8 +439,15 @@
           <aside class="factory-card">
             <img src="{{PANEL_CORRIDOR_URL}}" alt="영진인슈로산업 HACCP 냉동·냉장 콜드체인 시설 시공 이미지" loading="lazy">
             <div class="factory-card-body">
-              <span class="section-eyebrow">NAMDONG COMPLEX · 37B-6L</span>
-              <h3>본사 &amp; 자체 발포·제작 공장</h3>
+              <div class="factory-title-row">
+                <div>
+                  <span class="section-eyebrow">NAMDONG COMPLEX · 37B-6L</span>
+                  <h3>본사 &amp; 자체 발포·제작 공장</h3>
+                </div>
+                <span class="factory-haccp-seal" title="HACCP 적용업체 · 식품위생 방열 설비">
+                  <img src="{{CI_HACCP_URL}}" alt="안전관리인증 HACCP 공식 마크">
+                </span>
+              </div>
               <div class="factory-ci-strip" aria-label="소재지·산업단지·경제단체 공식 CI">
                 <span class="ci-mini-chip ci-mini-light"><img src="{{CI_INCHEON_URL}}" alt="인천광역시 CI"></span>
                 <span class="ci-mini-chip ci-mini-light"><img src="{{CI_KICOX_URL}}" alt="한국산업단지공단 CI"></span>
@@ -526,6 +618,13 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
+        <div class="footer-brand-block">
+          <img class="footer-ci-white" src="{{CI_YOUNGJIN_WHITE_URL}}" alt="영진인슈로산업(주) SINCE 1991 공식 화이트 CI" loading="lazy">
+          <span class="footer-haccp-chip">
+            <img src="{{CI_HACCP_URL}}" alt="HACCP 공식 마크" loading="lazy">
+            <span>HACCP 적용업체</span>
+          </span>
+        </div>
         <div class="footer-meta">
           <strong class="footer-brand">영진인슈로산업(주) · YOUNGJIN INSULRO INDUSTRIAL CO., LTD.</strong>
           <p>대표이사: 전추길 · 사업자등록번호: 139-81-20002</p>

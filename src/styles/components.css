@@ -25,38 +25,75 @@
   gap: 20px;
 }
 
-.brand-mark {
+.brand-cluster {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex-shrink: 0;
 }
 
-.brand-hex {
-  width: 40px;
-  height: 40px;
-  filter: drop-shadow(0 0 12px rgba(56, 232, 255, 0.45));
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
+.brand-ci-plate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  padding: 5px 13px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.42), 0 0 22px rgba(56, 232, 255, 0.18);
+  transition: transform 0.2s var(--ease-snap), box-shadow 0.2s ease;
 }
 
-.brand-kicker {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.14em;
-  color: var(--cryo);
-  text-transform: uppercase;
+.brand-mark:hover .brand-ci-plate {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.48), 0 0 26px rgba(56, 232, 255, 0.36);
 }
 
-.brand-name {
-  font-size: 1.05rem;
+.brand-ci-plate img {
+  height: 35px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.header-haccp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 4px 11px 4px 6px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(49, 186, 186, 0.58);
+  background: linear-gradient(135deg, rgba(20, 128, 128, 0.28), rgba(245, 178, 52, 0.14));
+  color: #dffefb;
+  font-size: 0.74rem;
   font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--ink-primary);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  box-shadow: 0 0 18px rgba(49, 186, 186, 0.24);
+  transition: transform 0.2s var(--ease-snap), border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.header-haccp-badge:hover {
+  transform: translateY(-1px);
+  border-color: #5eead4;
+  box-shadow: 0 0 24px rgba(49, 186, 186, 0.45);
+}
+
+.header-haccp-badge img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #ffffff;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .site-nav {
@@ -255,8 +292,47 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
+}
+
+.cinema-top-badges {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cinema-haccp-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 13px 4px 6px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(54, 198, 198, 0.62);
+  background: rgba(5, 28, 34, 0.72);
+  backdrop-filter: blur(12px);
+  color: #d8fffb;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  box-shadow: 0 0 22px rgba(45, 196, 196, 0.28);
+  transition: transform 0.2s var(--ease-snap), border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cinema-haccp-pill:hover {
+  transform: translateY(-1px);
+  border-color: #67f5eb;
+  box-shadow: 0 0 28px rgba(54, 198, 198, 0.5);
+}
+
+.cinema-haccp-pill img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ffffff;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .cinema-kicker-tag {
@@ -731,13 +807,16 @@
 }
 
 /* ==========================================================================
-   PURE OFFICIAL INSTITUTIONAL CI MARQUEE (CI IMAGES ONLY)
+   PURE OFFICIAL INSTITUTIONAL & PARTNER CI MARQUEE (CI IMAGES ONLY)
    ========================================================================== */
 .ci-marquee-section {
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
   background: linear-gradient(180deg, rgba(6, 13, 27, 0.96) 0%, rgba(4, 9, 20, 0.98) 100%);
-  padding: 22px 0;
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   overflow: hidden;
 }
 
@@ -752,7 +831,11 @@
   align-items: center;
   gap: 18px;
   width: max-content;
-  animation: marqueeScroll 30s linear infinite;
+  animation: marqueeScroll 32s linear infinite;
+}
+
+.ci-track-reverse {
+  animation: marqueeScrollReverse 38s linear infinite;
 }
 
 .ci-track:hover {
@@ -763,7 +846,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 68px;
+  height: 70px;
   min-width: 176px;
   max-width: 248px;
   padding: 12px 24px;
@@ -781,15 +864,13 @@
 }
 
 .ci-logo-tile.ci-plate-square {
-  min-width: 84px;
-  padding: 10px 18px;
+  min-width: 96px;
+  padding: 8px 18px;
 }
 
-.ci-logo-tile.ci-plate-flag {
-  min-width: 92px;
-  padding: 10px 14px;
-  background: rgba(14, 24, 46, 0.96);
-  border: 1px solid rgba(154, 198, 236, 0.28);
+.ci-logo-tile.ci-plate-tall {
+  min-width: 146px;
+  padding: 9px 20px;
 }
 
 .ci-logo-tile img {
@@ -800,12 +881,155 @@
 }
 
 .ci-logo-tile.ci-plate-square img {
-  height: 44px;
+  height: 52px;
 }
 
-.ci-logo-tile.ci-plate-flag img {
+.ci-logo-tile.ci-plate-tall img {
+  height: 48px;
+}
+
+/* ==========================================================================
+   HACCP HYGIENE COLD-CHAIN STANDARD SHOWCASE
+   ========================================================================== */
+.haccp-showcase {
+  padding: 58px 0 16px;
+  scroll-margin-top: calc(var(--nav-height) + 12px);
+}
+
+.haccp-showcase-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: 28px;
+  align-items: center;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(54, 198, 198, 0.38);
+  background:
+    radial-gradient(ellipse 68% 72% at 12% 18%, rgba(34, 178, 178, 0.16), transparent 68%),
+    radial-gradient(ellipse 52% 60% at 92% 86%, rgba(245, 178, 52, 0.1), transparent 70%),
+    linear-gradient(155deg, rgba(8, 22, 38, 0.94), rgba(5, 11, 24, 0.97));
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(120, 245, 240, 0.14);
+}
+
+.haccp-seal-pair {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.haccp-seal-ring {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  padding: 5px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid rgba(54, 198, 198, 0.85);
+  box-shadow: 0 0 28px rgba(45, 196, 196, 0.42);
+  flex-shrink: 0;
+}
+
+.haccp-seal-ring img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.haccp-yj-plate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  padding: 10px 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.36);
+}
+
+.haccp-yj-plate img {
   height: 40px;
-  border-radius: 5px;
+  width: auto;
+  object-fit: contain;
+}
+
+.haccp-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #5eead4;
+  margin-bottom: 8px;
+}
+
+.haccp-brand-hero h2 {
+  margin: 0 0 12px;
+  font-size: clamp(1.38rem, 2.2vw, 1.88rem);
+  font-weight: 900;
+  line-height: 1.24;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  word-break: keep-all;
+}
+
+.haccp-brand-hero p {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: var(--ink-secondary);
+  word-break: keep-all;
+}
+
+.haccp-brand-hero strong {
+  color: #99f6e4;
+}
+
+.haccp-pillars {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.haccp-pillar {
+  padding: 18px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(94, 234, 212, 0.22);
+  background: rgba(6, 15, 30, 0.78);
+  transition: transform 0.22s var(--ease-snap), border-color 0.22s ease;
+}
+
+.haccp-pillar:hover {
+  transform: translateY(-2px);
+  border-color: rgba(94, 234, 212, 0.55);
+}
+
+.haccp-pillar-num {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #f6b94c;
+  margin-bottom: 6px;
+}
+
+.haccp-pillar h3 {
+  margin: 0 0 6px;
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #ffffff;
+  word-break: keep-all;
+}
+
+.haccp-pillar p {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--ink-secondary);
+  word-break: keep-all;
 }
 
 /* Inline CI badges in Public Track Table, Timeline, and Factory Card */
@@ -926,6 +1150,11 @@
 @keyframes marqueeScroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
+}
+
+@keyframes marqueeScrollReverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
 }
 
 /* ==========================================================================
@@ -1548,10 +1777,42 @@
   padding: 24px;
 }
 
+.factory-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.factory-title-row .section-eyebrow {
+  margin-bottom: 4px;
+}
+
 .factory-card-body h3 {
-  margin: 0 0 10px;
+  margin: 0;
   font-size: 1.32rem;
   font-weight: 900;
+}
+
+.factory-haccp-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  padding: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid rgba(54, 198, 198, 0.8);
+  box-shadow: 0 0 20px rgba(45, 196, 196, 0.35);
+  flex-shrink: 0;
+}
+
+.factory-haccp-seal img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .factory-desc {
@@ -1838,8 +2099,46 @@
 .footer-grid {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   gap: 28px;
   flex-wrap: wrap;
+}
+
+.footer-brand-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.footer-ci-white {
+  height: 78px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 16px rgba(56, 232, 255, 0.18));
+}
+
+.footer-haccp-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 11px 4px 6px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(54, 198, 198, 0.45);
+  background: rgba(16, 72, 76, 0.35);
+  color: #ccfbf1;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.footer-haccp-chip img {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  object-fit: contain;
 }
 
 .footer-meta p {
@@ -1874,8 +2173,15 @@
 /* ==========================================================================
    RESPONSIVE BREAKPOINTS
    ========================================================================== */
+@media (max-width: 1240px) {
+  .header-haccp-badge {
+    display: none;
+  }
+}
+
 @media (max-width: 1120px) {
   .visual-triptych,
+  .haccp-showcase-panel,
   .cutaway-layout,
   .heritage-grid,
   .quote-layout {
@@ -1932,9 +2238,19 @@
   }
 
   .product-grid,
+  .haccp-pillars,
   .form-grid,
   .audit-compare,
   .contact-cards {
     grid-template-columns: 1fr;
+  }
+
+  .brand-ci-plate {
+    height: 40px;
+    padding: 4px 10px;
+  }
+
+  .brand-ci-plate img {
+    height: 30px;
   }
 }
