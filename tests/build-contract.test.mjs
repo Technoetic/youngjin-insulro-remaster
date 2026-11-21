@@ -50,8 +50,9 @@ test('dist build artifacts satisfy GitHub Pages subpath, zero legacy bugs, and 1
   assert.doesNotMatch(html, /ci-plate-flag/, 'Flag tile must be removed from CI marquee');
   assert.doesNotMatch(html, /ci-incheon\.svg/, 'Old Incheon SVG must be replaced with attached PNG');
   assert.match(html, /ci-incheon\.png/);
-  assert.match(html, /ci-youngjin-color\.png/, 'Authentic color Youngjin CI must be wired in header/showcase');
-  assert.match(html, /ci-youngjin-white\.png/, 'Authentic white Youngjin CI must be wired in footer');
+  assert.doesNotMatch(html, /ci-youngjin-color/i, 'Color boxed Youngjin CI must be removed');
+  assert.doesNotMatch(catalogRaw, /ci-youngjin-color/i, 'Color boxed Youngjin CI must not exist in catalog');
+  assert.match(html, /ci-youngjin-white\.png/, 'Authentic white Youngjin CI must be wired across header, showcase, and footer');
   assert.match(html, /ci-haccp\.png/, 'Official Korean HACCP CI must be featured');
   assert.doesNotMatch(html, /class="brand-hex"/, 'Custom line-art brand-hex SVG must be replaced with official CI');
   for (const partnerSlug of [
@@ -69,6 +70,9 @@ test('dist build artifacts satisfy GitHub Pages subpath, zero legacy bugs, and 1
   }
   assert.doesNotMatch(catalogRaw, /flag-kr/i, 'KR flag image must not exist in catalog');
   assert.doesNotMatch(html, /class="ci-meta"/, 'CI marquee must display pure CI images only');
+  assert.equal((html.match(/class="ci-track"/g) || []).length, 1, 'CI marquee must be a single row');
+  assert.match(html, /data-count-to="1991"/, 'Hero must align with SINCE 1991 CI');
+  assert.doesNotMatch(html, /EST\. <span[^>]*>1987/, 'Hero must not conflict with SINCE 1991 CI');
   assert.match(html, /data-count-to="-40"/);
   assert.match(html, /axis-pulse-cryo/);
   assert.ok(catalog.remasterAudit.length >= 5);
