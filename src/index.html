@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="app-build" content="{{BUILD_ID}}">
-  <title>영진인슈로산업(주) — -40°C 초저온 방열도어 & 콜드체인 엔지니어링 리마스터</title>
-  <meta name="description" content="1987년 창업, 인천 남동국가산업단지 자체 발포·제작·직접 시공·긴급 A/S. 영하 40℃ 초저온 전동 슬라이딩 방열문(최대 4,500×4,000mm), 우레탄판넬, 에어커튼, 플로어히터 전문 영진인슈로산업(주) 공식 리마스터.">
-  <meta property="og:title" content="영진인슈로산업(주) — -40°C의 벽, 단 1mm의 냉기도 허용하지 않는다">
-  <meta property="og:description" content="39년 외길 자체 발포·제작·직접 시공 방열도어 & 콜드체인 엔지니어링. 실시간 BLDC 도어 개폐 & FLIR 열화상 시뮬레이터 체험.">
-  <meta property="og:image" content="{{HERO_CRYO_URL}}">
+  <title>영진인슈로산업(주) — 열기는 부서진다. 냉기는 영원하다. (-40°C 초저온 방열문)</title>
+  <meta name="description" content="1987년 창업, 인천 남동국가산업단지 자체 발포·제작·직접 시공·긴급 A/S. +35℃ 폭염과 -40℃ 극한을 가르는 150mm 초저온 방열문, 우레탄판넬, 에어커튼, 플로어히터 전문 영진인슈로산업(주).">
+  <meta property="og:title" content="영진인슈로산업(주) — 열기는 부서진다. 냉기는 영원하다.">
+  <meta property="og:description" content="+35℃ 폭염과 -40℃ 초저온을 가르는 150mm 절대 기밀 방열도어. 39년 자체 제작·직접 시공 영진인슈로산업(주) 리마스터.">
+  <meta property="og:image" content="{{HERO_MONOLITH_URL}}">
   <link rel="icon" type="image/svg+xml" href="{{FAVICON_URL}}">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
@@ -17,7 +17,7 @@
 <body>
   <a href="#hero" class="skip-link">본문으로 바로가기</a>
 
-  <!-- FIXED GLASS HEADER -->
+  <!-- RAZOR-CLEAN TRANSPARENT CINEMA HEADER -->
   <header id="site-header" class="site-header">
     <div class="container header-inner">
       <a href="#hero" data-nav class="brand-mark" aria-label="영진인슈로산업(주) 홈">
@@ -27,18 +27,18 @@
           <path d="M20 20L32 33L44 20M32 33V48" stroke="#F0FAFF" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <span class="brand-text">
-          <span class="brand-kicker">EST. 1987 · COLD-CHAIN BARRIER</span>
+          <span class="brand-kicker">EST. 1987 · -40°C THERMAL MONOLITH</span>
           <span class="brand-name">영진인슈로산업(주)</span>
         </span>
       </a>
 
       <nav id="site-nav" class="site-nav" aria-label="주요 메뉴">
-        <a href="#hero" data-nav aria-current="location">라이브 히어로</a>
-        <a href="#engineering" data-nav>X-Ray 구조</a>
+        <a href="#hero" data-nav aria-current="location">히어로</a>
+        <a href="#engineering" data-nav>6층 단면</a>
         <a href="#products" data-nav>제품 19종</a>
         <a href="#track-record" data-nav>공공 실적</a>
         <a href="#heritage" data-nav>연혁·공장</a>
-        <a href="#quote" data-nav>견적 시뮬레이터</a>
+        <a href="#quote" data-nav>견적 문의</a>
       </nav>
 
       <div class="header-actions">
@@ -60,218 +60,233 @@
 
   <main>
     <!-- ================================================================
-         SECTION 1: EXTREME VISUAL DOPAMINE HERO STAGE
+         SECTION 1: PURE EXTREME-VISUAL DOPAMINE CINEMA HERO (100svh)
+         Zero UI dashboards or sliders obstructing the visual impact!
          ================================================================ -->
-    <section id="hero" class="hero-stage" aria-label="영진인슈로산업 초저온 방열도어 라이브 히어로">
-      <div class="hero-backdrop" aria-hidden="true">
-        <img class="hero-backdrop-img" src="{{HERO_CRYO_URL}}" alt="" fetchpriority="high">
+    <section id="hero" class="cinema-hero" data-scene="0" aria-label="영진인슈로산업 초저온 방열도어 시네마 히어로">
+      <!-- Full-Bleed 3-Poster IMAX Visual Reel -->
+      <div class="cinema-reel" aria-hidden="true">
+        <figure class="cinema-slide is-active" data-cinema-slide="0" aria-hidden="false">
+          <img src="{{HERO_MONOLITH_URL}}" alt="" fetchpriority="high">
+        </figure>
+        <figure class="cinema-slide" data-cinema-slide="1" aria-hidden="true">
+          <img src="{{HERO_MACRO_URL}}" alt="">
+        </figure>
+        <figure class="cinema-slide" data-cinema-slide="2" aria-hidden="true">
+          <img src="{{HERO_CATHEDRAL_URL}}" alt="">
+        </figure>
       </div>
-      <div class="hero-veil" aria-hidden="true"></div>
-      <div class="hero-flir-spotlight" aria-hidden="true"></div>
-      <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
 
-      <div class="container hero-grid">
-        <!-- LEFT: HIGH-VOLTAGE TYPOGRAPHY & DOPAMINE HOOK -->
-        <div class="hero-copy">
-          <div class="hero-live-pill">
-            <span class="live-dot" aria-hidden="true"></span>
-            <span>EST. 1987 · INCHEON NAMDONG 37B-6L · DIRECT MANUFACTURING &amp; MRO</span>
+      <!-- Surgical Lower-Left Contrast Feathering (Center Artwork Stays 100% Vivid!) -->
+      <div class="cinema-vignette" aria-hidden="true"></div>
+      <div class="cinema-anamorphic-flare" aria-hidden="true"></div>
+
+      <!-- Pure Ambient Visual Embers & Sub-Zero Frost Motes -->
+      <canvas id="hero-canvas" class="cinema-canvas" aria-hidden="true"></canvas>
+
+      <!-- Minimal Edge Film-Poster Framing -->
+      <div class="container cinema-top-strip">
+        <span class="cinema-kicker-tag">
+          <img class="mini-flag" src="{{FLAG_KR_URL}}" alt="대한민국">
+          <span class="live-dot" aria-hidden="true"></span>
+          YOUNGJIN INSULRO · EST. 1987 · INCHEON NAMDONG 37B-6L
+        </span>
+        <span class="cinema-temp-axis mono" aria-hidden="true">
+          <span class="axis-cryo">-40°C CRYO</span>
+          <span class="axis-bar"></span>
+          <span class="axis-core">150mm PU</span>
+          <span class="axis-bar axis-bar-heat"></span>
+          <span class="axis-heat">+35°C HEAT</span>
+        </span>
+      </div>
+
+      <!-- Colossal Editorial Movie-Poster Headline (Lower-Left Safe Zone) -->
+      <div class="container cinema-lower-stage">
+        <div class="cinema-copy-stack">
+          <div class="cinema-copy is-active" data-cinema-copy="0">
+            <h1 class="cinema-headline">
+              <span class="line-heat">열기는 부서진다.</span><br>
+              <span class="line-cryo">냉기는 영원하다.</span>
+            </h1>
+            <p class="cinema-sub">
+              <strong>+35°C의 폭염</strong>과 <strong>-40°C의 극한</strong>을 가르는 <strong>150mm 절대 기밀 방열문</strong>.<br>
+              39년 자체 발포·SUS 0.8T 정밀 제작·직접 시공 · 영진인슈로산업(주).
+            </p>
           </div>
 
-          <h1 class="hero-headline">
-            <span class="cryo-accent">-40°C의 벽,</span><br>
-            단 <span class="heat-accent">1mm</span>의 냉기도<br>
-            허용하지 않는다.
-          </h1>
+          <div class="cinema-copy" data-cinema-copy="1" hidden>
+            <p class="cinema-headline" aria-hidden="true">
+              <span class="line-cryo">150mm의 결계,</span><br>
+              <span class="line-heat">불과 얼음을 가르다.</span>
+            </p>
+            <p class="cinema-sub">
+              <strong>SUS 0.8T 스테인리스 외피</strong>와 <strong>고압 경질 폴리우레탄 발포 코어</strong>.<br>
+              단 1mm의 열교도 허용하지 않는 물리적 초저온 장벽.
+            </p>
+          </div>
 
-          <p class="hero-sub">
-            <strong>자체 우레탄 발포 · SUS 0.8T 제작 · 직접 시공 · 긴급 MRO A/S.</strong><br>
-            39년 외길 <strong>영진인슈로산업(주)</strong>이 외부 +35℃ 열기와 영하 40℃ 초저온 코어 사이의 절대 기밀 장벽을 완성합니다.
-          </p>
+          <div class="cinema-copy" data-cinema-copy="2" hidden>
+            <p class="cinema-headline" aria-hidden="true">
+              <span class="line-cryo">영하 40도의 성역,</span><br>
+              <span class="line-heat">39년의 기술로 봉인.</span>
+            </p>
+            <p class="cinema-sub">
+              <strong>최대 4,500×4,000mm 초대형 전동 슬라이딩 방열도어</strong>.<br>
+              인천 남동국가산단 2,645.7㎡ 자체 거점에서 제작부터 긴급 MRO까지 원스톱.
+            </p>
+          </div>
+        </div>
 
-          <!-- 4-STAGE REAL THICKNESS SELECTOR -->
-          <div class="thickness-selector">
-            <div class="selector-label">
-              <span>THERMAL BARRIER DEPTH SELECTOR</span>
-              <strong id="selector-active-label">150mm · -40°C (초저온 급속동결)</strong>
+        <!-- Ultra-Slim Cinema Bottom Hairline Rail -->
+        <div class="cinema-bottom-rail">
+          <div class="cinema-stats-inline">
+            <div class="c-stat">
+              <strong class="mono">-40<em>°C</em></strong>
+              <span>150mm 초저온 대응</span>
             </div>
-            <div class="thickness-grid" role="group" aria-label="방열문 두께별 사용온도 선택">
-              <button type="button" class="thickness-chip" data-thickness="75" aria-pressed="false">
-                <span class="chip-mm">75mm</span>
-                <span class="chip-temp">-10℃</span>
-                <span class="chip-tag">냉장·예냉</span>
-              </button>
-              <button type="button" class="thickness-chip" data-thickness="100" aria-pressed="false">
-                <span class="chip-mm">100mm</span>
-                <span class="chip-temp">-25℃</span>
-                <span class="chip-tag">표준 냉동</span>
-              </button>
-              <button type="button" class="thickness-chip" data-thickness="125" aria-pressed="false">
-                <span class="chip-mm">125mm</span>
-                <span class="chip-temp">-30℃</span>
-                <span class="chip-tag">강냉동 물류</span>
-              </button>
-              <button type="button" class="thickness-chip is-active" data-thickness="150" aria-pressed="true">
-                <span class="chip-mm">150mm</span>
-                <span class="chip-temp">-40℃</span>
-                <span class="chip-tag">초저온 MAX</span>
-              </button>
+            <div class="c-stat">
+              <strong class="mono">4,500<em>×</em>4,000</strong>
+              <span>최대 개구부 (mm)</span>
+            </div>
+            <div class="c-stat">
+              <strong class="mono">1987<em>→</em>2026</strong>
+              <span>업력 39년 자체 시공</span>
+            </div>
+            <div class="c-stat">
+              <strong class="mono">2,645.7<em>㎡</em></strong>
+              <span>남동공단 1단지 거점</span>
             </div>
           </div>
 
-          <div class="hero-cta-row">
-            <button id="hero-actuate-btn" type="button" class="btn-primary-dopamine">
-              ⚡ BLDC 도어 개방 체험
-            </button>
-            <button id="flir-toggle" type="button" class="btn-secondary-glass" aria-pressed="false">
-              🔥 FLIR 열화상 X-Ray
-            </button>
-            <a href="#quote" data-nav class="btn-secondary-glass">
-              맞춤 사양·견적 →
+          <div class="cinema-rail-right">
+            <div class="reel-dots" role="group" aria-label="히어로 비주얼 씬">
+              <button type="button" class="reel-dot is-active" data-reel-dot="0" aria-current="true" aria-label="비주얼 01: 열기 대 극저온 충돌">
+                <span class="mono">01</span>
+                <span class="reel-progress"></span>
+              </button>
+              <button type="button" class="reel-dot" data-reel-dot="1" aria-current="false" aria-label="비주얼 02: 150mm 초접사 단면 결계">
+                <span class="mono">02</span>
+                <span class="reel-progress"></span>
+              </button>
+              <button type="button" class="reel-dot" data-reel-dot="2" aria-current="false" aria-label="비주얼 03: 영하 40도 볼트 개방">
+                <span class="mono">03</span>
+                <span class="reel-progress"></span>
+              </button>
+            </div>
+            <a href="#quote" data-nav class="btn-cinema-cta">
+              견적 문의 →
             </a>
           </div>
-        </div>
-
-        <!-- RIGHT: INTERACTIVE MECHANICAL SLIDING DOOR ACTUATOR COCKPIT -->
-        <aside class="hero-cockpit" aria-label="전동 슬라이딩 방열문 실시간 시뮬레이터">
-          <div class="cockpit-head">
-            <div class="cockpit-title">
-              <span>LIVE BLDC SLIDING DOOR SIMULATOR</span>
-            </div>
-            <span id="cockpit-status-badge" class="cockpit-status-badge">AIRTIGHT SEAL LOCKED</span>
-          </div>
-
-          <div id="door-sim-stage" class="door-sim-stage is-sealed" style="--open-ratio:0;--foam-pct:100;">
-            <!-- Overhead Drive Rail -->
-            <div class="sim-rail">
-              <span class="sim-motor-unit">BLDC 220V · 150W DRIVE</span>
-              <span class="sim-motor-unit">MAX 4,500×4,000mm</span>
-              <div class="sim-rail-led" aria-hidden="true"></div>
-            </div>
-
-            <!-- Sub-Zero Vault Interior behind Door -->
-            <div class="sim-interior">
-              <div class="sim-interior-grid" aria-hidden="true"></div>
-              <div class="sim-air-curtain" aria-hidden="true"></div>
-              <div class="sim-core-readout">
-                <span class="sim-core-label">CRYO CORE CHAMBER</span>
-                <div id="sim-core-temp" class="sim-core-temp">-40.0°C</div>
-              </div>
-              <div class="sim-core-readout">
-                <span id="sim-grade" class="sim-core-label">CRYO-150 MAX · 150mm</span>
-              </div>
-            </div>
-
-            <!-- Exterior +35C Heat Zone -->
-            <div class="sim-ambient-badge">
-              <span>EXTERIOR DOCK</span>
-              <strong>+35.0°C</strong>
-            </div>
-
-            <!-- Sliding Heavy Stainless Door Leaf -->
-            <div class="sim-door-leaf" aria-hidden="true">
-              <div class="sim-door-seam"></div>
-              <div class="sim-door-handle"></div>
-              <div class="sim-door-plate">
-                YOUNGJIN INSULRO<br>
-                SUS 0.8T · INSULATED
-              </div>
-              <div class="sim-foam-gauge">
-                <span id="sim-foam-mm">PU CORE 150mm</span>
-                <span class="sim-foam-bar"></span>
-              </div>
-            </div>
-
-            <div id="sim-seal-flash" class="sim-seal-flash" aria-hidden="true"></div>
-          </div>
-
-          <!-- Interactive Slider & Switches -->
-          <div class="cockpit-controls">
-            <div class="slider-wrap">
-              <label for="door-slider">
-                <span>SLIDE POSITION (드래그 체험)</span>
-                <strong id="slider-pct">0%</strong>
-              </label>
-              <input id="door-slider" type="range" min="0" max="100" value="0" aria-label="방열문 개방률 조절">
-            </div>
-            <button id="cockpit-actuate-btn" type="button" class="btn-actuator">BLDC 도어 개방 (OPEN)</button>
-            <button id="curtain-toggle" type="button" class="btn-curtain" aria-pressed="true">에어커튼 ON</button>
-          </div>
-
-          <!-- Live Telemetry Metrics (Interactive Simulation Estimate) -->
-          <div class="telemetry-grid">
-            <div class="telemetry-cell">
-              <span class="t-label">온도 차 장벽</span>
-              <span id="tele-delta" class="t-val is-cryo">75°C ΔT</span>
-            </div>
-            <div class="telemetry-cell">
-              <span class="t-label">기밀 유지율 (모의)</span>
-              <span id="tele-seal" class="t-val is-good">100.0%</span>
-            </div>
-            <div class="telemetry-cell">
-              <span class="t-label">열 침입 추정</span>
-              <span id="tele-leak" class="t-val">0.19 kW</span>
-            </div>
-            <div class="telemetry-cell">
-              <span class="t-label">구동 출력</span>
-              <span id="tele-drive" class="t-val">HOLD 0W</span>
-            </div>
-          </div>
-        </aside>
-      </div>
-
-      <!-- HERO BOTTOM FACTUAL KPI RAIL -->
-      <div class="container hero-kpi-rail">
-        <div class="kpi-card">
-          <span class="kpi-val"><em>-40</em>°C</span>
-          <span class="kpi-label">초저온 4단계 두께 대응</span>
-          <span class="kpi-sub">75 · 100 · 125 · 150mm 경질 우레탄 발포</span>
-        </div>
-        <div class="kpi-card">
-          <span class="kpi-val">4,500<em>×</em>4,000</span>
-          <span class="kpi-label">최대 유효개구부 제작 (mm)</span>
-          <span class="kpi-sub">SUS 0.8T · BLDC 220V 150W 전동 구동</span>
-        </div>
-        <div class="kpi-card">
-          <span class="kpi-val">1987<em>→</em>2026</span>
-          <span class="kpi-label">업력 39년 · 법인 36년차</span>
-          <span class="kpi-sub">자체 제작 → 직접 시공 → 사후 A/S 일원화</span>
-        </div>
-        <div class="kpi-card">
-          <span class="kpi-val">2,645.7<em>㎡</em></span>
-          <span class="kpi-label">남동국가산단 1단지 자체 거점</span>
-          <span class="kpi-sub">인천 남동구 남촌동 37B-6L (약 800평)</span>
         </div>
       </div>
     </section>
 
-    <!-- VERIFIED PUBLIC TRACK & CORE CAPABILITY MARQUEE -->
-    <div class="partner-ticker" aria-label="2025~2026 검증 공공계약 기관 및 핵심 제조 역량">
-      <div class="container ticker-wrap">
-        <span class="ticker-label">VERIFIED PUBLIC TRACK</span>
-        <div class="ticker-track-mask">
-          <div class="ticker-track">
-            <span class="ticker-item">인천 남촌농축산물도매시장 (공식 계약 확인)</span>
-            <span class="ticker-item">인천 삼산농산물도매시장 (공식 계약 확인)</span>
-            <span class="ticker-item">수협중앙회 전문공사·판넬 보수</span>
-            <span class="ticker-item">aT 인천지역본부 비축기지 전동문·배기창</span>
-            <span class="ticker-item">서울특별시농수산식품공사 강서지사</span>
-            <span class="ticker-item">구리농수산물공사 방열문·에어커튼</span>
-            <span class="ticker-item">인천상공회의소 정회원</span>
-            <span class="ticker-item">남동국가산단 1단지 37B-6L 자체 제작·시공</span>
-            <!-- Duplicate for seamless loop -->
-            <span class="ticker-item">인천 남촌농축산물도매시장 (공식 계약 확인)</span>
-            <span class="ticker-item">인천 삼산농산물도매시장 (공식 계약 확인)</span>
-            <span class="ticker-item">수협중앙회 전문공사·판넬 보수</span>
-            <span class="ticker-item">aT 인천지역본부 비축기지 전동문·배기창</span>
-            <span class="ticker-item">서울특별시농수산식품공사 강서지사</span>
-            <span class="ticker-item">구리농수산물공사 방열문·에어커튼</span>
-            <span class="ticker-item">인천상공회의소 정회원</span>
-            <span class="ticker-item">남동국가산단 1단지 37B-6L 자체 제작·시공</span>
+    <!-- ================================================================
+         FULL-BLEED VISUAL IMPACT TRIPTYCH (ALL 3 ARTWORKS AT MAXIMUM SCALE)
+         ================================================================ -->
+    <section class="visual-triptych" aria-label="초저온 방열문 3대 시각 매니페스토">
+      <article class="triptych-panel">
+        <img src="{{HERO_MONOLITH_URL}}" alt="폭염 스파크와 영하 40도 빙결을 가르는 SUS 0.8T 전동 슬라이딩 방열문" loading="lazy">
+        <div class="triptych-overlay">
+          <span class="mono triptych-code">01 · ELEMENTAL BARRIER</span>
+          <h2>폭염의 스파크가 멈추는 단 하나의 경계</h2>
+          <p>+35℃ 외부 열기와 -40℃ 극저온 내부를 단절하는 SUS 0.8T 전동 슬라이딩 모놀리스</p>
+        </div>
+      </article>
+      <article class="triptych-panel">
+        <img src="{{HERO_MACRO_URL}}" alt="SUS 외피와 고압 경질 폴리우레탄 150mm 발포 코어의 불과 얼음 단면 대결" loading="lazy">
+        <div class="triptych-overlay">
+          <span class="mono triptych-code">02 · 150MM FOAM SHIELD</span>
+          <h2>75 · 100 · 125 · 150mm 초고밀도 발포 결계</h2>
+          <p>자체 고압 우레탄 주입 발포(CANNON/AFROS 계보)로 공극과 열교를 원천 봉쇄</p>
+        </div>
+      </article>
+      <article class="triptych-panel">
+        <img src="{{HERO_CATHEDRAL_URL}}" alt="영하 40도 초저온 냉동창고 초대형 방열 볼트 도어 개방 장면" loading="lazy">
+        <div class="triptych-overlay">
+          <span class="mono triptych-code">03 · -40°C CRYOGENIC PORTAL</span>
+          <h2>최대 4.5m 초대형 개구부 · BLDC 150W 구동</h2>
+          <p>도매시장·비축기지·HACCP 대형 냉동창고를 39년 직접 제작·시공·긴급 A/S로 수호</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- VERIFIED PUBLIC TRACK & OFFICIAL INSTITUTIONAL CI MARQUEE -->
+    <section class="ci-marquee-section" aria-label="2025~2026 검증 공공계약 기관·경제단체·국가 CI">
+      <div class="container ci-marquee-head">
+        <span class="ticker-label">VERIFIED PUBLIC &amp; INSTITUTIONAL CI</span>
+        <span class="ci-marquee-note">공식 공공계약 확인 기관 · 소속 경제단체 · 입주 산업단지 · 설비 도입국 CI</span>
+      </div>
+      <div class="ci-track-mask">
+        <div class="ci-track">
+          <div class="ci-card">
+            <span class="ci-plate ci-plate-square"><img src="{{CI_INCHEON_URL}}" alt="인천광역시 공식 심볼 CI"></span>
+            <div class="ci-meta"><strong>인천광역시</strong><span>남촌·삼산 도매시장 공식 계약</span></div>
+          </div>
+          <div class="ci-card">
+            <span class="ci-plate"><img src="{{CI_SUHYUP_URL}}" alt="수협중앙회 공식 CI"></span>
+            <div class="ci-meta"><strong>수협중앙회</strong><span>전문공사·가공장 판넬 보수</span></div>
+          </div>
+          <div class="ci-card">
+            <span class="ci-plate"><img src="{{CI_AT_URL}}" alt="한국농수산식품유통공사 aT 공식 CI"></span>
+            <div class="ci-meta"><strong>aT 인천지역본부</strong><span>비축기지 전동문·배기창 보수</span></div>
+          </div>
+          <div class="ci-card">
+            <span class="ci-plate"><img src="{{CI_GARAK_URL}}" alt="서울특별시농수산식품공사 공식 CI"></span>
+            <div class="ci-meta"><strong>서울특별시농수산식품공사</strong><span>강서지사 저온창고 방열문</span></div>
+          </div>
+          <div class="ci-card">
+            <span class="ci-plate"><img src="{{CI_GAMACO_URL}}" alt="구리농수산물공사 공식 CI"></span>
+            <div class="ci-meta"><strong>구리농수산물공사</strong><span>냉동창고 방열문·에어커튼</span></div>
+          </div>
+          <div class="ci-card">
+            <span class="ci-plate"><img src="{{CI_INCHEON_CCI_URL}}" alt="인천상공회의소 공식 CI"></span>
+            <div class="ci-meta"><strong>인천상공회의소</strong><span>지역 산업계 정식 회원사</span></div>
+          </div>
+          <div class="ci-card">
+            <span class="ci-plate"><img src="{{CI_KICOX_URL}}" alt="한국산업단지공단 공식 CI"></span>
+            <div class="ci-meta"><strong>남동국가산업단지</strong><span>1단지 37B-6L 자체 공장</span></div>
+          </div>
+          <div class="ci-card">
+            <span class="ci-plate ci-plate-flag"><img src="{{FLAG_IT_URL}}" alt="이탈리아 국기"></span>
+            <div class="ci-meta"><strong>ITALY CANNON / AFROS</strong><span>1999 고압 발포·프레스 도입</span></div>
+          </div>
+          <!-- Duplicate track for seamless infinite cinema scroll -->
+          <div class="ci-card" aria-hidden="true">
+            <span class="ci-plate ci-plate-square"><img src="{{CI_INCHEON_URL}}" alt=""></span>
+            <div class="ci-meta"><strong>인천광역시</strong><span>남촌·삼산 도매시장 공식 계약</span></div>
+          </div>
+          <div class="ci-card" aria-hidden="true">
+            <span class="ci-plate"><img src="{{CI_SUHYUP_URL}}" alt=""></span>
+            <div class="ci-meta"><strong>수협중앙회</strong><span>전문공사·가공장 판넬 보수</span></div>
+          </div>
+          <div class="ci-card" aria-hidden="true">
+            <span class="ci-plate"><img src="{{CI_AT_URL}}" alt=""></span>
+            <div class="ci-meta"><strong>aT 인천지역본부</strong><span>비축기지 전동문·배기창 보수</span></div>
+          </div>
+          <div class="ci-card" aria-hidden="true">
+            <span class="ci-plate"><img src="{{CI_GARAK_URL}}" alt=""></span>
+            <div class="ci-meta"><strong>서울특별시농수산식품공사</strong><span>강서지사 저온창고 방열문</span></div>
+          </div>
+          <div class="ci-card" aria-hidden="true">
+            <span class="ci-plate"><img src="{{CI_GAMACO_URL}}" alt=""></span>
+            <div class="ci-meta"><strong>구리농수산물공사</strong><span>냉동창고 방열문·에어커튼</span></div>
+          </div>
+          <div class="ci-card" aria-hidden="true">
+            <span class="ci-plate"><img src="{{CI_INCHEON_CCI_URL}}" alt=""></span>
+            <div class="ci-meta"><strong>인천상공회의소</strong><span>지역 산업계 정식 회원사</span></div>
+          </div>
+          <div class="ci-card" aria-hidden="true">
+            <span class="ci-plate"><img src="{{CI_KICOX_URL}}" alt=""></span>
+            <div class="ci-meta"><strong>남동국가산업단지</strong><span>1단지 37B-6L 자체 공장</span></div>
+          </div>
+          <div class="ci-card" aria-hidden="true">
+            <span class="ci-plate ci-plate-flag"><img src="{{FLAG_IT_URL}}" alt=""></span>
+            <div class="ci-meta"><strong>ITALY CANNON / AFROS</strong><span>1999 고압 발포·프레스 도입</span></div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- ================================================================
          SECTION 2: X-RAY 6-LAYER CUTAWAY ENGINEERING
@@ -396,6 +411,12 @@
             <div class="factory-card-body">
               <span class="section-eyebrow">NAMDONG COMPLEX · 37B-6L</span>
               <h3>본사 &amp; 자체 발포·제작 공장</h3>
+              <div class="factory-ci-strip" aria-label="소재지·산업단지·경제단체 공식 CI">
+                <span class="ci-mini-chip"><img class="mini-flag" src="{{FLAG_KR_URL}}" alt="대한민국"><span>대한민국</span></span>
+                <span class="ci-mini-chip ci-mini-light"><img src="{{CI_INCHEON_URL}}" alt="인천광역시 CI"></span>
+                <span class="ci-mini-chip ci-mini-light"><img src="{{CI_KICOX_URL}}" alt="한국산업단지공단 CI"></span>
+                <span class="ci-mini-chip ci-mini-light"><img src="{{CI_INCHEON_CCI_URL}}" alt="인천상공회의소 CI"></span>
+              </div>
               <p class="factory-desc">
                 인천 남동국가산업단지 1단지 내 대지 2,645.7㎡(약 800평) 거점에서 수도권 전역 저온창고 방열도어 맞춤 제작 및 신속 교체·보수 출동을 지원합니다.
               </p>
@@ -422,7 +443,7 @@
         <div class="section-head">
           <div>
             <span class="section-eyebrow">05 · INSTANT SPEC &amp; QUOTE BUILDER</span>
-            <h2 class="section-title">현장 치수 기반 방열도어 사양·견적 시뮬레이터</h2>
+            <h2 class="section-title">현장 치수 기반 방열도어 사양·견적 문의</h2>
             <p class="section-desc">
               개구부 치수(최대 4,500×4,000mm)와 사용 온도대를 선택하면 즉시 발송 가능한 기술 견적 요청서가 자동 작성됩니다.
             </p>

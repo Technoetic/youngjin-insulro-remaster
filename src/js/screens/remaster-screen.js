@@ -3,8 +3,6 @@ import { VersionService } from '../services/version-service.js';
 import { QuoteService } from '../services/quote-service.js';
 import { HeroVisualEngine } from './hero-visual-engine.js';
 import {
-  clamp,
-  computeThermalSpec,
   escapeHtml,
   formatNumber,
   parseRoute
@@ -31,12 +29,6 @@ export class RemasterScreen {
   #checkedHashURL = null;
   #initialDeepLink = false;
 
-  // Interactive Hero State
-  #thicknessMm = 150;
-  #openRatio = 0;
-  #airCurtain = true;
-  #flirMode = false;
-
   // View State
   #activeCategory = 'doors';
   #activeLayerId = 'sus-skin';
@@ -58,7 +50,7 @@ export class RemasterScreen {
     const signal = this.#events.signal;
     this.#initialDeepLink = Boolean(location.hash && parseRoute(location.hash).section !== 'hero');
 
-    // 1. Start Real-time Cryo-Thermal Hero Engine
+    // 1. Start Pure Visual Cinema Hero Engine (auto-playing 3-poster IMAX reel + ember/frost atmosphere)
     this.#heroEngine = new HeroVisualEngine({
       stage: document.querySelector('#hero'),
       canvas: document.querySelector('#hero-canvas')
@@ -83,53 +75,7 @@ export class RemasterScreen {
       { signal }
     );
 
-    // 3. Hero Interactive Actuator Controls
-    document.querySelectorAll('[data-thickness]').forEach(btn => {
-      btn.addEventListener(
-        'click',
-        () => {
-          this.#setThickness(Number(btn.dataset.thickness), true);
-        },
-        { signal }
-      );
-    });
-
-    const toggleDoor = () => {
-      const next = this.#openRatio > 0.35 ? 0 : 1;
-      this.#setDoorOpen(next, true);
-    };
-
-    document.querySelector('#hero-actuate-btn')?.addEventListener('click', toggleDoor, { signal });
-    document.querySelector('#cockpit-actuate-btn')?.addEventListener('click', toggleDoor, { signal });
-
-    document.querySelector('#door-slider')?.addEventListener(
-      'input',
-      event => {
-        const pct = clamp(Number(event.target.value), 0, 100);
-        this.#setDoorOpen(pct / 100, false);
-      },
-      { signal }
-    );
-
-    document.querySelector('#curtain-toggle')?.addEventListener(
-      'click',
-      () => {
-        this.#airCurtain = !this.#airCurtain;
-        this.#renderHeroTelemetry();
-      },
-      { signal }
-    );
-
-    document.querySelector('#flir-toggle')?.addEventListener(
-      'click',
-      () => {
-        this.#flirMode = !this.#flirMode;
-        this.#renderHeroTelemetry();
-      },
-      { signal }
-    );
-
-    // 4. Delegated listeners for dynamic catalog/cutaway/record controls (cleaned up via AbortSignal)
+    // 3. Delegated listeners for dynamic catalog/cutaway/record controls (cleaned up via AbortSignal)
     document.querySelector('#engineering')?.addEventListener(
       'click',
       event => {
@@ -182,7 +128,7 @@ export class RemasterScreen {
       { signal }
     );
 
-    // 5. Retry Catalog Load
+    // 4. Retry Catalog Load
     document.querySelector('#retry-catalog')?.addEventListener(
       'click',
       () => {
@@ -191,7 +137,7 @@ export class RemasterScreen {
       { signal }
     );
 
-    // 6. Remaster Before/After Audit Modal
+    // 5. Remaster Before/After Audit Modal
     const auditDialog = document.querySelector('#audit-dialog');
     document.querySelectorAll('[data-open-audit]').forEach(btn => {
       btn.addEventListener(
@@ -225,10 +171,10 @@ export class RemasterScreen {
       { signal }
     );
 
-    // 7. Quote Configurator Events (Dirty State & Async Save)
+    // 6. Quote Configurator Events (Dirty State & Async Save)
     this.#bindQuoteForm(signal);
 
-    // 8. Navigation & Rule 6 Deployment Update Lifecycle
+    // 7. Navigation & Rule 6 Deployment Update Lifecycle
     document.addEventListener(
       'click',
       event => {
@@ -299,129 +245,11 @@ export class RemasterScreen {
       { signal }
     );
 
-    // 9. Initial Render & Async Data Load
-    this.#renderHeroTelemetry();
+    // 8. Initial Render & Async Data Load
     this.#renderQuoteState(this.#quoteService.state);
     this.#applyRouteFromHash(false);
     void this.#versionService.check({ priority: 'background' });
     await this.#loadCatalog();
-  }
-
-  #setThickness(mm, syncQuote = false) {
-    this.#thicknessMm = mm;
-    this.#renderHeroTelemetry();
-    if (syncQuote) {
-      const sel = document.querySelector('#q-thickness');
-      if (sel) sel.value = String(mm);
-      this.#quoteService.update({ thicknessMm: mm });
-    }
-  }
-
-  #setDoorOpen(ratio, animateFlash = false) {
-    const prev = this.#openRatio;
-    this.#openRatio = clamp(ratio, 0, 1);
-    this.#renderHeroTelemetry();
-
-    if (animateFlash && prev > 0.25 && this.#openRatio <= 0.05) {
-      const flash = document.querySelector('#sim-seal-flash');
-      if (flash) {
-        flash.classList.remove('is-flashing');
-        void flash.offsetWidth;
-        flash.classList.add('is-flashing');
-      }
-    }
-  }
-
-  #renderHeroTelemetry() {
-    if (this.#disposed) return;
-    const stage = document.querySelector('#hero');
-    const simStage = document.querySelector('#door-sim-stage');
-    const spec = computeThermalSpec({
-      thicknessMm: this.#thicknessMm,
-      ambientC: 35,
-      openRatio: this.#openRatio,
-      airCurtain: this.#airCurtain
-    });
-
-    const isOpen = this.#openRatio > 0.05;
-    stage?.classList.toggle('is-flir', this.#flirMode);
-    stage?.classList.toggle('is-open', isOpen);
-    simStage?.classList.toggle('is-sealed', !isOpen);
-    simStage?.classList.toggle('is-flir-mini', this.#flirMode);
-    simStage?.classList.toggle('is-curtain-active', isOpen && this.#airCurtain);
-    simStage?.style.setProperty('--open-ratio', String(this.#openRatio));
-
-    const foamPct = ((spec.thicknessMm - 45) / 105) * 100;
-    simStage?.style.setProperty('--foam-pct', String(Math.round(foamPct)));
-
-    document.querySelectorAll('[data-thickness]').forEach(btn => {
-      const active = Number(btn.dataset.thickness) === spec.thicknessMm;
-      btn.classList.toggle('is-active', active);
-      btn.setAttribute('aria-pressed', String(active));
-    });
-
-    const flirBtn = document.querySelector('#flir-toggle');
-    if (flirBtn) {
-      flirBtn.classList.toggle('is-active', this.#flirMode);
-      flirBtn.setAttribute('aria-pressed', String(this.#flirMode));
-    }
-
-    const curtainBtn = document.querySelector('#curtain-toggle');
-    if (curtainBtn) {
-      curtainBtn.setAttribute('aria-pressed', String(this.#airCurtain));
-      curtainBtn.textContent = this.#airCurtain ? '에어커튼 ON' : '에어커튼 OFF';
-    }
-
-    const slider = document.querySelector('#door-slider');
-    if (slider) slider.value = String(Math.round(this.#openRatio * 100));
-    const sliderPct = document.querySelector('#slider-pct');
-    if (sliderPct) sliderPct.textContent = `${Math.round(this.#openRatio * 100)}%`;
-
-    const statusBadge = document.querySelector('#cockpit-status-badge');
-    if (statusBadge) {
-      statusBadge.classList.toggle('is-open', isOpen);
-      statusBadge.textContent = isOpen
-        ? this.#airCurtain
-          ? 'OPEN · AIR CURTAIN ACTIVE'
-          : 'OPEN · UNSHIELDED'
-        : 'AIRTIGHT SEAL LOCKED';
-    }
-
-    const actuateLabel = isOpen ? '도어 완전 밀폐 (SEAL)' : 'BLDC 도어 개방 (OPEN)';
-    const cockpitBtn = document.querySelector('#cockpit-actuate-btn');
-    if (cockpitBtn) cockpitBtn.textContent = actuateLabel;
-
-    const heroActuateBtn = document.querySelector('#hero-actuate-btn');
-    if (heroActuateBtn) {
-      heroActuateBtn.textContent = isOpen ? '⚡ EPDM 완전 밀폐 실행' : '⚡ BLDC 도어 개방 체험';
-    }
-
-    const setTxt = (id, text) => {
-      const el = document.querySelector(id);
-      if (el) el.textContent = text;
-    };
-
-    setTxt('#sim-core-temp', `${spec.coreTempC.toFixed(1)}°C`);
-    setTxt('#sim-grade', `${spec.grade} · ${spec.thicknessMm}mm`);
-    setTxt('#sim-foam-mm', `PU CORE ${spec.thicknessMm}mm`);
-    setTxt('#tele-delta', `${spec.deltaT.toFixed(0)}°C ΔT`);
-    setTxt('#tele-seal', `${spec.sealIntegrity.toFixed(1)}%`);
-    setTxt('#tele-leak', `${spec.leakKw.toFixed(2)} kW`);
-    setTxt('#tele-drive', isOpen ? 'BLDC 148W' : 'HOLD 0W');
-    setTxt('#selector-active-label', `${spec.thicknessMm}mm · ${spec.targetC}°C (${spec.label})`);
-
-    const sealEl = document.querySelector('#tele-seal');
-    if (sealEl) {
-      sealEl.classList.toggle('is-good', spec.sealIntegrity >= 95);
-      sealEl.classList.toggle('is-heat', spec.sealIntegrity < 70);
-    }
-
-    this.#heroEngine?.setState({
-      openRatio: this.#openRatio,
-      flir: this.#flirMode,
-      airCurtain: this.#airCurtain,
-      thicknessMm: spec.thicknessMm
-    });
   }
 
   async #loadCatalog() {
@@ -618,7 +446,12 @@ export class RemasterScreen {
         row => `
         <tr>
           <td class="mono">${escapeHtml(row.date)}</td>
-          <td><strong>${escapeHtml(row.client)}</strong></td>
+          <td>
+            <div class="client-ci-cell">
+              ${row.ci ? `<span class="table-ci-plate"><img src="${escapeHtml(row.ci)}" alt="${escapeHtml(row.ciAlt || row.client)}" loading="lazy"></span>` : ''}
+              <strong>${escapeHtml(row.client)}</strong>
+            </div>
+          </td>
           <td>${escapeHtml(row.project)}</td>
           <td><span class="record-cat-badge">${escapeHtml(row.category)}</span></td>
           <td class="mono">${escapeHtml(row.amount)}</td>
@@ -633,15 +466,26 @@ export class RemasterScreen {
     const mount = document.querySelector('#timeline-list');
     if (!mount || !this.#catalog) return;
     mount.innerHTML = this.#catalog.timeline
-      .map(
-        item => `
+      .map(item => {
+        const badgesHtml = Array.isArray(item.badges) && item.badges.length
+          ? `<div class="timeline-badges">${item.badges
+              .map(
+                b =>
+                  `<span class="timeline-badge ${b.kind === 'ci' ? 'is-ci' : 'is-flag'}"><img src="${escapeHtml(b.src)}" alt="${escapeHtml(b.alt)}" loading="lazy"><span>${escapeHtml(b.label)}</span></span>`
+              )
+              .join('')}</div>`
+          : '';
+        return `
         <article class="timeline-item">
-          <div class="timeline-year">${escapeHtml(item.year)}</div>
+          <div class="timeline-head-row">
+            <div class="timeline-year">${escapeHtml(item.year)}</div>
+            ${badgesHtml}
+          </div>
           <h3>${escapeHtml(item.title)}</h3>
           <p>${escapeHtml(item.detail)}</p>
         </article>
-      `
-      )
+      `;
+      })
       .join('');
   }
 
@@ -684,12 +528,7 @@ export class RemasterScreen {
     };
 
     bindInput('#q-door-type', 'doorType');
-    bindInput('#q-thickness', 'thicknessMm', v => {
-      const n = Number(v);
-      this.#thicknessMm = n;
-      this.#renderHeroTelemetry();
-      return n;
-    });
+    bindInput('#q-thickness', 'thicknessMm', v => Number(v));
     bindInput('#q-width', 'widthMm', v => Number(v));
     bindInput('#q-height', 'heightMm', v => Number(v));
     bindInput('#q-site-type', 'siteType');

@@ -36,19 +36,31 @@ for (const file of allSource) {
 }
 
 const sourceMedia = [
-  ['hero-cryo-vault.jpg', 'HERO_CRYO_URL'],
+  ['hero-fire-ice-monolith.jpg', 'HERO_MONOLITH_URL'],
+  ['hero-macro-150mm.jpg', 'HERO_MACRO_URL'],
+  ['hero-cryo-cathedral.jpg', 'HERO_CATHEDRAL_URL'],
   ['door-cutaway.jpg', 'DOOR_CUTAWAY_URL'],
   ['panel-corridor.jpg', 'PANEL_CORRIDOR_URL'],
-  ['dock-equipment.jpg', 'DOCK_EQUIPMENT_URL']
+  ['dock-equipment.jpg', 'DOCK_EQUIPMENT_URL'],
+  ['ci/ci-incheon.svg', 'CI_INCHEON_URL'],
+  ['ci/ci-suhyup.svg', 'CI_SUHYUP_URL'],
+  ['ci/ci-at.png', 'CI_AT_URL'],
+  ['ci/ci-garak.svg', 'CI_GARAK_URL'],
+  ['ci/ci-gamaco.png', 'CI_GAMACO_URL'],
+  ['ci/ci-incheon-cci.png', 'CI_INCHEON_CCI_URL'],
+  ['ci/ci-kicox.svg', 'CI_KICOX_URL'],
+  ['ci/flag-kr.svg', 'FLAG_KR_URL'],
+  ['ci/flag-it.svg', 'FLAG_IT_URL']
 ];
 
 const media = {};
 await mkdir(path.join(output, 'media'), { recursive: true });
-for (const [filename, tokenName] of sourceMedia) {
-  const bytes = await readFile(path.join(root, 'source-media', filename));
+for (const [relPath, tokenName] of sourceMedia) {
+  const bytes = await readFile(path.join(root, 'source-media', relPath));
   const digest = createHash('sha256').update(bytes).digest('hex');
-  hash.update(filename).update(digest);
-  const hashedName = `${digest.slice(0, 12)}-${filename}`;
+  hash.update(relPath).update(digest);
+  const baseName = path.basename(relPath);
+  const hashedName = `${digest.slice(0, 12)}-${baseName}`;
   await writeFile(path.join(output, 'media', hashedName), bytes);
   media[tokenName] = {
     url: `./media/${hashedName}`,
@@ -80,10 +92,7 @@ const tokens = {
   STYLE_URL: `./assets/${build}/styles.css`,
   APP_URL: `./assets/${build}/app.js`,
   FAVICON_URL: `./assets/${build}/favicon.svg`,
-  HERO_CRYO_URL: media.HERO_CRYO_URL.url,
-  DOOR_CUTAWAY_URL: media.DOOR_CUTAWAY_URL.url,
-  PANEL_CORRIDOR_URL: media.PANEL_CORRIDOR_URL.url,
-  DOCK_EQUIPMENT_URL: media.DOCK_EQUIPMENT_URL.url
+  ...Object.fromEntries(Object.entries(media).map(([k, v]) => [k, v.url]))
 };
 
 const replaceTokens = input =>
@@ -120,7 +129,7 @@ await writeFile(
 <body>
   <main>
     <h1>요청하신 경로를 찾을 수 없습니다 (404)</h1>
-    <p>영진인슈로산업(주) 리마스터 메인 페이지에서 방열문·우레탄판넬·콜드체인 설비와 견적 시뮬레이터를 확인해 주세요.</p>
+    <p>영진인슈로산업(주) 리마스터 메인 페이지에서 방열문·우레탄판넬·콜드체인 설비와 견적 사양서를 확인해 주세요.</p>
     <a href="/youngjin-insulro-remaster/">영진인슈로산업(주) 메인으로 돌아가기</a>
   </main>
 </body>

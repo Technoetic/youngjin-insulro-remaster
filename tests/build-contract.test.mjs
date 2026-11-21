@@ -33,7 +33,7 @@ test('dist build artifacts satisfy GitHub Pages subpath, zero legacy bugs, and 1
   assert.equal(totalItems, 19);
 
   for (const url of Object.values(catalog.media)) {
-    assert.match(url, /^\.\/media\/[a-f0-9]{12}-.+\.jpg$/);
+    assert.match(url, /^\.\/media\/[a-f0-9]{12}-.+\.(jpg|png|svg)$/);
     await access(path.join(dist, url.replace(/^\.\//, '')));
   }
 
