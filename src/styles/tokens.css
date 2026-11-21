@@ -1,0 +1,60 @@
+:root {
+  /* Core Obsidian & Cryo-Thermal Palette */
+  --bg-void: #030711;
+  --bg-obsidian: #070d1b;
+  --bg-surface: #0d1629;
+  --bg-surface-elevated: #12203a;
+  --bg-glass: rgba(9, 17, 34, 0.74);
+  --bg-glass-strong: rgba(7, 13, 27, 0.9);
+
+  /* High-Voltage Cryo Cyan & Thermal Amber Accents */
+  --cryo: #38e8ff;
+  --cryo-bright: #98f6ff;
+  --cryo-deep: #0099cc;
+  --cryo-glow: rgba(56, 232, 255, 0.32);
+  --cryo-soft: rgba(56, 232, 255, 0.12);
+
+  --heat: #ff6b2c;
+  --heat-bright: #ff9c59;
+  --heat-glow: rgba(255, 107, 44, 0.34);
+  --heat-soft: rgba(255, 107, 44, 0.14);
+
+  --steel: #cbd7e6;
+  --steel-muted: #8ea3be;
+  --foam-gold: #f5d08a;
+  --emerald: #34f5a5;
+  --danger: #ff4d6d;
+
+  /* Text Hierarchy */
+  --ink-primary: #f2f8ff;
+  --ink-secondary: #b9cde4;
+  --ink-muted: #7d93ae;
+  --ink-inverse: #030a16;
+
+  /* Borders & Dividers */
+  --border-subtle: rgba(154, 198, 236, 0.14);
+  --border-cryo: rgba(56, 232, 255, 0.38);
+  --border-heat: rgba(255, 107, 44, 0.42);
+  --border-strong: rgba(203, 215, 230, 0.28);
+
+  /* Typography */
+  --font-display: "Pretendard Variable", "Pretendard", "SUIT", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-mono: "JetBrains Mono", "Space Grotesk", ui-monospace, SFMono-Regular, Consolas, monospace;
+
+  /* Layout & Radius */
+  --container-max: 1280px;
+  --nav-height: 74px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-card: 0 24px 60px rgba(0, 4, 14, 0.55);
+  --shadow-cryo: 0 0 36px rgba(56, 232, 255, 0.25), 0 12px 32px rgba(0, 8, 22, 0.6);
+  --shadow-heat: 0 0 32px rgba(255, 107, 44, 0.28);
+
+  /* Motion */
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-snap: cubic-bezier(0.22, 1, 0.36, 1);
+}

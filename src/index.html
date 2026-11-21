@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="app-build" content="{{BUILD_ID}}">
+  <title>영진인슈로산업(주) — -40°C 초저온 방열도어 & 콜드체인 엔지니어링 리마스터</title>
+  <meta name="description" content="1987년 창업, 인천 남동국가산업단지 자체 발포·제작·직접 시공·긴급 A/S. 영하 40℃ 초저온 전동 슬라이딩 방열문(최대 4,500×4,000mm), 우레탄판넬, 에어커튼, 플로어히터 전문 영진인슈로산업(주) 공식 리마스터.">
+  <meta property="og:title" content="영진인슈로산업(주) — -40°C의 벽, 단 1mm의 냉기도 허용하지 않는다">
+  <meta property="og:description" content="39년 외길 자체 발포·제작·직접 시공 방열도어 & 콜드체인 엔지니어링. 실시간 BLDC 도어 개폐 & FLIR 열화상 시뮬레이터 체험.">
+  <meta property="og:image" content="{{HERO_CRYO_URL}}">
+  <link rel="icon" type="image/svg+xml" href="{{FAVICON_URL}}">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="{{STYLE_URL}}">
+</head>
+<body>
+  <a href="#hero" class="skip-link">본문으로 바로가기</a>
+
+  <!-- FIXED GLASS HEADER -->
+  <header id="site-header" class="site-header">
+    <div class="container header-inner">
+      <a href="#hero" data-nav class="brand-mark" aria-label="영진인슈로산업(주) 홈">
+        <svg class="brand-hex" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <polygon points="32,4 56,18 56,46 32,60 8,46 8,18" stroke="#38E8FF" stroke-width="3" fill="#081428"/>
+          <polygon points="32,11 50,21.5 50,42.5 32,53 14,42.5 14,21.5" stroke="#FF6B2C" stroke-width="1.6" stroke-opacity="0.75" fill="none"/>
+          <path d="M20 20L32 33L44 20M32 33V48" stroke="#F0FAFF" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-text">
+          <span class="brand-kicker">EST. 1987 · COLD-CHAIN BARRIER</span>
+          <span class="brand-name">영진인슈로산업(주)</span>
+        </span>
+      </a>
+
+      <nav id="site-nav" class="site-nav" aria-label="주요 메뉴">
+        <a href="#hero" data-nav aria-current="location">라이브 히어로</a>
+        <a href="#engineering" data-nav>X-Ray 구조</a>
+        <a href="#products" data-nav>제품 19종</a>
+        <a href="#track-record" data-nav>공공 실적</a>
+        <a href="#heritage" data-nav>연혁·공장</a>
+        <a href="#quote" data-nav>견적 시뮬레이터</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="btn-audit-pill" data-open-audit>
+          <span>BEFORE→AFTER</span>
+        </button>
+        <a href="tel:032-815-7431" class="btn-tel-pill">
+          <span class="mono">032-815-7431</span>
+          <span class="tel-hide-sm">직통</span>
+        </a>
+        <button id="menu-toggle" type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="메뉴 열기">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="update-banner" class="update-banner" role="status" aria-live="polite" hidden></div>
+
+  <main>
+    <!-- ================================================================
+         SECTION 1: EXTREME VISUAL DOPAMINE HERO STAGE
+         ================================================================ -->
+    <section id="hero" class="hero-stage" aria-label="영진인슈로산업 초저온 방열도어 라이브 히어로">
+      <div class="hero-backdrop" aria-hidden="true">
+        <img class="hero-backdrop-img" src="{{HERO_CRYO_URL}}" alt="" fetchpriority="high">
+      </div>
+      <div class="hero-veil" aria-hidden="true"></div>
+      <div class="hero-flir-spotlight" aria-hidden="true"></div>
+      <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+
+      <div class="container hero-grid">
+        <!-- LEFT: HIGH-VOLTAGE TYPOGRAPHY & DOPAMINE HOOK -->
+        <div class="hero-copy">
+          <div class="hero-live-pill">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span>EST. 1987 · INCHEON NAMDONG 37B-6L · DIRECT MANUFACTURING &amp; MRO</span>
+          </div>
+
+          <h1 class="hero-headline">
+            <span class="cryo-accent">-40°C의 벽,</span><br>
+            단 <span class="heat-accent">1mm</span>의 냉기도<br>
+            허용하지 않는다.
+          </h1>
+
+          <p class="hero-sub">
+            <strong>자체 우레탄 발포 · SUS 0.8T 제작 · 직접 시공 · 긴급 MRO A/S.</strong><br>
+            39년 외길 <strong>영진인슈로산업(주)</strong>이 외부 +35℃ 열기와 영하 40℃ 초저온 코어 사이의 절대 기밀 장벽을 완성합니다.
+          </p>
+
+          <!-- 4-STAGE REAL THICKNESS SELECTOR -->
+          <div class="thickness-selector">
+            <div class="selector-label">
+              <span>THERMAL BARRIER DEPTH SELECTOR</span>
+              <strong id="selector-active-label">150mm · -40°C (초저온 급속동결)</strong>
+            </div>
+            <div class="thickness-grid" role="group" aria-label="방열문 두께별 사용온도 선택">
+              <button type="button" class="thickness-chip" data-thickness="75" aria-pressed="false">
+                <span class="chip-mm">75mm</span>
+                <span class="chip-temp">-10℃</span>
+                <span class="chip-tag">냉장·예냉</span>
+              </button>
+              <button type="button" class="thickness-chip" data-thickness="100" aria-pressed="false">
+                <span class="chip-mm">100mm</span>
+                <span class="chip-temp">-25℃</span>
+                <span class="chip-tag">표준 냉동</span>
+              </button>
+              <button type="button" class="thickness-chip" data-thickness="125" aria-pressed="false">
+                <span class="chip-mm">125mm</span>
+                <span class="chip-temp">-30℃</span>
+                <span class="chip-tag">강냉동 물류</span>
+              </button>
+              <button type="button" class="thickness-chip is-active" data-thickness="150" aria-pressed="true">
+                <span class="chip-mm">150mm</span>
+                <span class="chip-temp">-40℃</span>
+                <span class="chip-tag">초저온 MAX</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-cta-row">
+            <button id="hero-actuate-btn" type="button" class="btn-primary-dopamine">
+              ⚡ BLDC 도어 개방 체험
+            </button>
+            <button id="flir-toggle" type="button" class="btn-secondary-glass" aria-pressed="false">
+              🔥 FLIR 열화상 X-Ray
+            </button>
+            <a href="#quote" data-nav class="btn-secondary-glass">
+              맞춤 사양·견적 →
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT: INTERACTIVE MECHANICAL SLIDING DOOR ACTUATOR COCKPIT -->
+        <aside class="hero-cockpit" aria-label="전동 슬라이딩 방열문 실시간 시뮬레이터">
+          <div class="cockpit-head">
+            <div class="cockpit-title">
+              <span>LIVE BLDC SLIDING DOOR SIMULATOR</span>
+            </div>
+            <span id="cockpit-status-badge" class="cockpit-status-badge">AIRTIGHT SEAL LOCKED</span>
+          </div>
+
+          <div id="door-sim-stage" class="door-sim-stage is-sealed" style="--open-ratio:0;--foam-pct:100;">
+            <!-- Overhead Drive Rail -->
+            <div class="sim-rail">
+              <span class="sim-motor-unit">BLDC 220V · 150W DRIVE</span>
+              <span class="sim-motor-unit">MAX 4,500×4,000mm</span>
+              <div class="sim-rail-led" aria-hidden="true"></div>
+            </div>
+
+            <!-- Sub-Zero Vault Interior behind Door -->
+            <div class="sim-interior">
+              <div class="sim-interior-grid" aria-hidden="true"></div>
+              <div class="sim-air-curtain" aria-hidden="true"></div>
+              <div class="sim-core-readout">
+                <span class="sim-core-label">CRYO CORE CHAMBER</span>
+                <div id="sim-core-temp" class="sim-core-temp">-40.0°C</div>
+              </div>
+              <div class="sim-core-readout">
+                <span id="sim-grade" class="sim-core-label">CRYO-150 MAX · 150mm</span>
+              </div>
+            </div>
+
+            <!-- Exterior +35C Heat Zone -->
+            <div class="sim-ambient-badge">
+              <span>EXTERIOR DOCK</span>
+              <strong>+35.0°C</strong>
+            </div>
+
+            <!-- Sliding Heavy Stainless Door Leaf -->
+            <div class="sim-door-leaf" aria-hidden="true">
+              <div class="sim-door-seam"></div>
+              <div class="sim-door-handle"></div>
+              <div class="sim-door-plate">
+                YOUNGJIN INSULRO<br>
+                SUS 0.8T · INSULATED
+              </div>
+              <div class="sim-foam-gauge">
+                <span id="sim-foam-mm">PU CORE 150mm</span>
+                <span class="sim-foam-bar"></span>
+              </div>
+            </div>
+
+            <div id="sim-seal-flash" class="sim-seal-flash" aria-hidden="true"></div>
+          </div>
+
+          <!-- Interactive Slider & Switches -->
+          <div class="cockpit-controls">
+            <div class="slider-wrap">
+              <label for="door-slider">
+                <span>SLIDE POSITION (드래그 체험)</span>
+                <strong id="slider-pct">0%</strong>
+              </label>
+              <input id="door-slider" type="range" min="0" max="100" value="0" aria-label="방열문 개방률 조절">
+            </div>
+            <button id="cockpit-actuate-btn" type="button" class="btn-actuator">BLDC 도어 개방 (OPEN)</button>
+            <button id="curtain-toggle" type="button" class="btn-curtain" aria-pressed="true">에어커튼 ON</button>
+          </div>
+
+          <!-- Live Telemetry Metrics (Interactive Simulation Estimate) -->
+          <div class="telemetry-grid">
+            <div class="telemetry-cell">
+              <span class="t-label">온도 차 장벽</span>
+              <span id="tele-delta" class="t-val is-cryo">75°C ΔT</span>
+            </div>
+            <div class="telemetry-cell">
+              <span class="t-label">기밀 유지율 (모의)</span>
+              <span id="tele-seal" class="t-val is-good">100.0%</span>
+            </div>
+            <div class="telemetry-cell">
+              <span class="t-label">열 침입 추정</span>
+              <span id="tele-leak" class="t-val">0.19 kW</span>
+            </div>
+            <div class="telemetry-cell">
+              <span class="t-label">구동 출력</span>
+              <span id="tele-drive" class="t-val">HOLD 0W</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- HERO BOTTOM FACTUAL KPI RAIL -->
+      <div class="container hero-kpi-rail">
+        <div class="kpi-card">
+          <span class="kpi-val"><em>-40</em>°C</span>
+          <span class="kpi-label">초저온 4단계 두께 대응</span>
+          <span class="kpi-sub">75 · 100 · 125 · 150mm 경질 우레탄 발포</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-val">4,500<em>×</em>4,000</span>
+          <span class="kpi-label">최대 유효개구부 제작 (mm)</span>
+          <span class="kpi-sub">SUS 0.8T · BLDC 220V 150W 전동 구동</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-val">1987<em>→</em>2026</span>
+          <span class="kpi-label">업력 39년 · 법인 36년차</span>
+          <span class="kpi-sub">자체 제작 → 직접 시공 → 사후 A/S 일원화</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-val">2,645.7<em>㎡</em></span>
+          <span class="kpi-label">남동국가산단 1단지 자체 거점</span>
+          <span class="kpi-sub">인천 남동구 남촌동 37B-6L (약 800평)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VERIFIED PUBLIC TRACK & CORE CAPABILITY MARQUEE -->
+    <div class="partner-ticker" aria-label="2025~2026 검증 공공계약 기관 및 핵심 제조 역량">
+      <div class="container ticker-wrap">
+        <span class="ticker-label">VERIFIED PUBLIC TRACK</span>
+        <div class="ticker-track-mask">
+          <div class="ticker-track">
+            <span class="ticker-item">인천 남촌농축산물도매시장 (공식 계약 확인)</span>
+            <span class="ticker-item">인천 삼산농산물도매시장 (공식 계약 확인)</span>
+            <span class="ticker-item">수협중앙회 전문공사·판넬 보수</span>
+            <span class="ticker-item">aT 인천지역본부 비축기지 전동문·배기창</span>
+            <span class="ticker-item">서울특별시농수산식품공사 강서지사</span>
+            <span class="ticker-item">구리농수산물공사 방열문·에어커튼</span>
+            <span class="ticker-item">인천상공회의소 정회원</span>
+            <span class="ticker-item">남동국가산단 1단지 37B-6L 자체 제작·시공</span>
+            <!-- Duplicate for seamless loop -->
+            <span class="ticker-item">인천 남촌농축산물도매시장 (공식 계약 확인)</span>
+            <span class="ticker-item">인천 삼산농산물도매시장 (공식 계약 확인)</span>
+            <span class="ticker-item">수협중앙회 전문공사·판넬 보수</span>
+            <span class="ticker-item">aT 인천지역본부 비축기지 전동문·배기창</span>
+            <span class="ticker-item">서울특별시농수산식품공사 강서지사</span>
+            <span class="ticker-item">구리농수산물공사 방열문·에어커튼</span>
+            <span class="ticker-item">인천상공회의소 정회원</span>
+            <span class="ticker-item">남동국가산단 1단지 37B-6L 자체 제작·시공</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================
+         SECTION 2: X-RAY 6-LAYER CUTAWAY ENGINEERING
+         ================================================================ -->
+    <section id="engineering" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-eyebrow">01 · THERMAL BARRIER X-RAY</span>
+            <h2 class="section-title">150mm 초저온 방열문, 6층 단면 해부</h2>
+            <p class="section-desc">
+              단면의 번호(1~6) 또는 우측 레이어를 클릭하면 영진인슈로 전동 슬라이딩 방열문이 -40℃ 냉기를 잠그는 실제 구조 사양을 확인할 수 있습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="cutaway-layout">
+          <div class="cutaway-visual-card">
+            <div class="cutaway-media-frame">
+              <img src="{{DOOR_CUTAWAY_URL}}" alt="150mm 초저온 전동 슬라이딩 방열문 3D 단면 구조" loading="lazy">
+              <div id="cutaway-hotspots"></div>
+            </div>
+            <div id="cutaway-active-detail" class="cutaway-active-detail" aria-live="polite"></div>
+          </div>
+
+          <div id="cutaway-layer-list" class="cutaway-layer-list" role="region" aria-label="방열문 6층 구조 목록"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECTION 3: 4 SYSTEMS · 19 REMASTERED PRODUCTS
+         ================================================================ -->
+    <section id="products" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-eyebrow">02 · COMPLETE LINEUP REMASTER</span>
+            <h2 class="section-title">4대 시스템 · 19개 품목 전면 기술 교정</h2>
+            <p class="section-desc">
+              기존 웹사이트의 고온 오븐·가정용 난방·가전 리모콘 오기를 100% 바로잡고, 냉동·냉장 실무와 현장 MRO 교체 기준에 맞춰 재정비했습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="catalog-status-bar">
+          <div id="category-tabs" class="category-tabs" role="tablist" aria-label="제품 카테고리"></div>
+        </div>
+
+        <div id="catalog-loading" class="state-panel" role="status">
+          제품 카탈로그와 검증 사양 데이터를 불러오는 중입니다...
+        </div>
+
+        <div id="catalog-error" class="state-panel" role="alert" hidden>
+          <p data-error-text>데이터를 불러오지 못했습니다.</p>
+          <button id="retry-catalog" type="button" class="btn-actuator">다시 시도</button>
+        </div>
+
+        <div id="catalog-content">
+          <div id="product-panel" role="tabpanel"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECTION 4: VERIFIED PUBLIC & MRO TRACK RECORD
+         ================================================================ -->
+    <section id="track-record" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-eyebrow">03 · VERIFIED PUBLIC PROCUREMENT &amp; MRO</span>
+            <h2 class="section-title">'실적 준비중'을 채운 검증 공공 계약 이력</h2>
+            <p class="section-desc">
+              수도권 공공 농수산물도매시장, aT 비축기지, 수협중앙회 등 노후 저온저장고의 현장 실측·맞춤 제작·신속 교체(MRO) 실적으로 증명된 현장 대응력입니다.
+            </p>
+          </div>
+          <div id="record-filters" class="filter-pills" role="group" aria-label="실적 유형 필터"></div>
+        </div>
+
+        <div class="record-table-wrap">
+          <table class="record-table">
+            <thead>
+              <tr>
+                <th>계약 시기</th>
+                <th>발주 기관</th>
+                <th>사업명 / 수행 내용</th>
+                <th>구분</th>
+                <th>계약 규모</th>
+                <th>출처 검증 상태</th>
+              </tr>
+            </thead>
+            <tbody id="record-tbody"></tbody>
+          </table>
+        </div>
+        <p class="record-footnote">
+          ※ 인천광역시 계약정보공개시스템(1차 공식 확인), 수협중앙회 계약현황 및 공공조달 집계(2024~2026) 교차 확인 기준입니다. 민간 고객사 상세 계약 원문은 비공개 원칙에 따라 별도 수치를 추산하지 않습니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECTION 5: 1987→2026 HERITAGE & NAMDONG FACTORY
+         ================================================================ -->
+    <section id="heritage" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-eyebrow">04 · 39 YEARS OF THERMAL CRAFTSMANSHIP</span>
+            <h2 class="section-title">1987→2026 연혁 &amp; 인천 남동공단 자체 거점</h2>
+            <p class="section-desc">
+              설계·실측부터 우레탄 발포, 스테인리스 가공, 현장 시공, 긴급 수선까지 외주 없이 직접 책임지는 원스톱 제조·시공 체계입니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="heritage-grid">
+          <div id="timeline-list" class="timeline-list"></div>
+
+          <aside class="factory-card">
+            <img src="{{PANEL_CORRIDOR_URL}}" alt="영진인슈로산업 HACCP 냉동·냉장 콜드체인 시설 시공 이미지" loading="lazy">
+            <div class="factory-card-body">
+              <span class="section-eyebrow">NAMDONG COMPLEX · 37B-6L</span>
+              <h3>본사 &amp; 자체 발포·제작 공장</h3>
+              <p class="factory-desc">
+                인천 남동국가산업단지 1단지 내 대지 2,645.7㎡(약 800평) 거점에서 수도권 전역 저온창고 방열도어 맞춤 제작 및 신속 교체·보수 출동을 지원합니다.
+              </p>
+              <ul class="factory-specs">
+                <li><span>법인명</span><strong>영진인슈로산업(주)</strong></li>
+                <li><span>대표이사</span><strong>전추길</strong></li>
+                <li><span>사업자등록번호</span><strong class="mono">139-81-20002</strong></li>
+                <li><span>소재지</span><strong>인천 남동구 함박뫼로377번길 43</strong></li>
+                <li><span>지번·공단</span><strong>남촌동 625-5 (남동1단지 37B-6L)</strong></li>
+                <li><span>경제단체</span><strong>인천상공회의소 회원사</strong></li>
+                <li><span>전문건설 등록</span><strong>금속·창호·지붕·건축물조립 (계약 전 KISCON 최신 확인)</strong></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECTION 6: INTERACTIVE QUOTE CONFIGURATOR & DIRECT CONTACT
+         ================================================================ -->
+    <section id="quote" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-eyebrow">05 · INSTANT SPEC &amp; QUOTE BUILDER</span>
+            <h2 class="section-title">현장 치수 기반 방열도어 사양·견적 시뮬레이터</h2>
+            <p class="section-desc">
+              개구부 치수(최대 4,500×4,000mm)와 사용 온도대를 선택하면 즉시 발송 가능한 기술 견적 요청서가 자동 작성됩니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="quote-layout">
+          <form id="quote-form" class="quote-form-card" aria-label="방열도어 견적 사양 입력">
+            <div class="form-grid">
+              <div class="field is-full">
+                <label for="q-door-type">요청 제품군</label>
+                <select id="q-door-type">
+                  <option value="전동 슬라이딩 방열문 (양개/편개)">전동 슬라이딩 방열문 (양개/편개)</option>
+                  <option value="수동 슬라이딩 방열문 (양개/편개)">수동 슬라이딩 방열문 (양개/편개)</option>
+                  <option value="상하 슬라이딩 방열문">상하 슬라이딩 방열문</option>
+                  <option value="오버랩 방열문">오버랩 방열문</option>
+                  <option value="축육용 방열문 (오버헤드 레일 관통형)">축육용 방열문 (오버헤드 레일 관통형)</option>
+                  <option value="냉동·저온창고용 환기·배기창 도어">냉동·저온창고용 환기·배기창 도어</option>
+                  <option value="카독크쉘타 / 스윙·스트립도어">카독크쉘타 / 스윙·스트립도어</option>
+                  <option value="우레탄판넬 보수 / 소형저장고">우레탄판넬 보수 / 소형저장고</option>
+                  <option value="에어커튼 / 플로어히터 / 리모콘·스위치">에어커튼 / 플로어히터 / 리모콘·스위치</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="q-thickness">사용 온도 / 도어 두께</label>
+                <select id="q-thickness">
+                  <option value="75">75mm (-10℃ 냉장·예냉)</option>
+                  <option value="100">100mm (-25℃ 표준 냉동)</option>
+                  <option value="125">125mm (-30℃ 강냉동 물류)</option>
+                  <option value="150" selected>150mm (-40℃ 초저온 MAX)</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="q-site-type">공사·발주 유형</label>
+                <select id="q-site-type">
+                  <option value="기존 저온창고 방열도어 교체·보수(MRO)">기존 저온창고 방열도어 교체·보수(MRO)</option>
+                  <option value="긴급 방열문 수선 · 패킹/모터 교체">긴급 방열문 수선 · 패킹/모터 교체</option>
+                  <option value="신규 저온저장고·도매시장 설비 제작·시공">신규 저온저장고·도매시장 설비 제작·시공</option>
+                  <option value="공공기관 수의계약·조달 견적 문의">공공기관 수의계약·조달 견적 문의</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="q-width">유효 폭 W (800 ~ 4,500 mm)</label>
+                <input id="q-width" type="number" min="800" max="4500" step="50" value="2800">
+              </div>
+
+              <div class="field">
+                <label for="q-height">유효 높이 H (1,800 ~ 4,000 mm)</label>
+                <input id="q-height" type="number" min="1800" max="4000" step="50" value="3200">
+              </div>
+
+              <div class="field is-full">
+                <label>추가 설비·옵션 선택</label>
+                <div class="option-checks">
+                  <button type="button" class="option-toggle" data-quote-option="에어커튼 연동" aria-pressed="true">에어커튼 연동</button>
+                  <button type="button" class="option-toggle" data-quote-option="지게차 원격 리모콘" aria-pressed="true">지게차 원격 리모콘</button>
+                  <button type="button" class="option-toggle" data-quote-option="바닥 플로어히터" aria-pressed="false">바닥 플로어히터</button>
+                  <button type="button" class="option-toggle" data-quote-option="내한 PVC 스트립 커튼" aria-pressed="false">내한 PVC 스트립 커튼</button>
+                  <button type="button" class="option-toggle" data-quote-option="현장 긴급 실측 요청" aria-pressed="false">현장 긴급 실측 요청</button>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="q-company">회사명 / 기관명</label>
+                <input id="q-company" type="text" placeholder="예: OO농수산물물류센터">
+              </div>
+
+              <div class="field">
+                <label for="q-contact">담당자 성함</label>
+                <input id="q-contact" type="text" placeholder="예: 홍길동 팀장">
+              </div>
+
+              <div class="field is-full">
+                <label for="q-phone">회신 연락처</label>
+                <input id="q-phone" type="tel" placeholder="예: 010-0000-0000">
+              </div>
+
+              <div class="field is-full">
+                <label for="q-notes">현장 지역 및 특이사항 (기존 문틀 치수, 레일 간섭, 긴급 여부 등)</label>
+                <textarea id="q-notes" placeholder="예: 인천 남동구 냉동창고 전동 양개도어 1식 노후 교체, 평일 오후 현장 실측 희망"></textarea>
+              </div>
+            </div>
+
+            <div class="quote-actions">
+              <button id="q-copy-btn" type="button" class="btn-primary-dopamine">견적 사양서 복사</button>
+              <button id="q-mailto-btn" type="button" class="btn-secondary-glass">이메일로 바로 보내기</button>
+              <button id="q-discard-btn" type="button" class="btn-discard">초안 초기화</button>
+            </div>
+            <div id="draft-status" class="draft-status" role="status" aria-live="polite"></div>
+          </form>
+
+          <aside class="quote-preview-card" aria-label="실시간 견적 사양서 미리보기 및 직통 연락처">
+            <div class="cockpit-head">
+              <span class="cockpit-title">LIVE SPEC BRIEF PREVIEW</span>
+              <span id="quote-dims-summary" class="cockpit-status-badge">W 2,800 × H 3,200 mm · 150mm</span>
+            </div>
+            <pre id="quote-brief-box" class="brief-box"></pre>
+
+            <div class="contact-cards">
+              <div class="contact-mini">
+                <span>대표 전화 (평일 09~18시)</span>
+                <a href="tel:032-815-7431">032-815-7431~4</a>
+              </div>
+              <div class="contact-mini">
+                <span>현장 직통 / 긴급 수선</span>
+                <a href="tel:010-9152-7672">010-9152-7672</a>
+              </div>
+              <div class="contact-mini">
+                <span>팩스 (도면 송부)</span>
+                <strong>032-815-7435</strong>
+              </div>
+              <div class="contact-mini">
+                <span>견적 이메일</span>
+                <a href="mailto:yj7431@korea.com">yj7431@korea.com</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- BEFORE / AFTER REMASTER AUDIT DIALOG -->
+  <dialog id="audit-dialog" class="audit-dialog" aria-labelledby="audit-dialog-title">
+    <div class="audit-dialog-head">
+      <h2 id="audit-dialog-title">기존 사이트(youngjininsulro.co.kr) → 리마스터 핵심 개선 내역</h2>
+      <button type="button" class="btn-actuator" data-close-audit aria-label="닫기">닫기 ✕</button>
+    </div>
+    <div id="audit-dialog-body" class="audit-dialog-body"></div>
+  </dialog>
+
+  <!-- CORRECTED CORPORATE FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-meta">
+          <strong class="footer-brand">영진인슈로산업(주) · YOUNGJIN INSULRO INDUSTRIAL CO., LTD.</strong>
+          <p>대표이사: 전추길 · 사업자등록번호: 139-81-20002</p>
+          <p>본사 및 공장: 인천광역시 남동구 함박뫼로377번길 43 (남촌동 625-5, 남동국가산업단지 1단지 37B-6L)</p>
+          <p>TEL: 032-815-7431~4 · FAX: 032-815-7435 · H.P: 010-9152-7672 · E-mail: yj7431@korea.com</p>
+        </div>
+        <div class="footer-meta">
+          <button type="button" class="btn-audit-pill" data-open-audit>리마스터 교정 리포트 보기</button>
+          <p class="footer-origin">원 사이트: <a href="http://youngjininsulro.co.kr/" target="_blank" rel="noopener noreferrer" class="footer-origin-link">http://youngjininsulro.co.kr/</a></p>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <span>© 2026 영진인슈로산업(주) (Youngjin Insulro Industrial Co., Ltd.) All Rights Reserved.</span>
+        <span class="mono">REMASTER BUILD {{BUILD_ID}}</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="{{APP_URL}}"></script>
+</body>
+</html>
