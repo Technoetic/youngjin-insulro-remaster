@@ -46,5 +46,10 @@ test('dist build artifacts satisfy GitHub Pages subpath, zero legacy bugs, and 1
   assert.doesNotMatch(companyAndProducts, /Owellsteel/i);
   assert.doesNotMatch(companyAndProducts, /제철소/);
   assert.doesNotMatch(companyAndProducts, /축전된 노하우/);
+  assert.doesNotMatch(html, /flag-kr/i, 'KR flag image must be completely removed');
+  assert.doesNotMatch(catalogRaw, /flag-kr/i, 'KR flag image must not exist in catalog');
+  assert.doesNotMatch(html, /class="ci-meta"/, 'CI marquee must display pure CI images only');
+  assert.match(html, /data-count-to="-40"/);
+  assert.match(html, /axis-pulse-cryo/);
   assert.ok(catalog.remasterAudit.length >= 5);
 });

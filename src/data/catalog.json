@@ -30,7 +30,6 @@
     "ciGamaco": "{{CI_GAMACO_URL}}",
     "ciIncheonCci": "{{CI_INCHEON_CCI_URL}}",
     "ciKicox": "{{CI_KICOX_URL}}",
-    "flagKr": "{{FLAG_KR_URL}}",
     "flagIt": "{{FLAG_IT_URL}}"
   },
   "thicknessProfiles": [
@@ -509,17 +508,13 @@
   "timeline": [
     {
       "year": "1987~1989",
-      "badges": [
-        { "src": "{{FLAG_KR_URL}}", "alt": "대한민국 국기", "label": "대한민국", "kind": "flag" }
-      ],
+      "badges": [],
       "title": "영진산업 창업 — 방열문·저온설비 외길의 시작",
       "detail": "냉장·냉동창고 방열관련 제품 제작 전문기업으로 출발 (NICE DB 1987년 3월 / 자사 홈페이지 1989년 표기 병존)."
     },
     {
       "year": "1991",
-      "badges": [
-        { "src": "{{FLAG_KR_URL}}", "alt": "대한민국 국기", "label": "법인 설립", "kind": "flag" }
-      ],
+      "badges": [],
       "title": "영진인슈로산업(주) 법인 전환",
       "detail": "전추길 대표이사 체제로 법인 설립(자본금 1억 원). 매일경제 신설법인 보도에 에어커튼 등 방열제품 제작사로 등재."
     },
@@ -533,9 +528,7 @@
     },
     {
       "year": "1997",
-      "badges": [
-        { "src": "{{FLAG_KR_URL}}", "alt": "대한민국 국기", "label": "제조·시공 일원화", "kind": "flag" }
-      ],
+      "badges": [],
       "title": "건축물조립공사업 면허 취득 & 제조·시공 일원화",
       "detail": "전문건설업 면허 취득 및 발포기·프레스 설비 증설로 자체 제작·직접 시공·사후관리(A/S) 원스톱 체계 확립."
     },
@@ -550,9 +543,7 @@
     },
     {
       "year": "2010",
-      "badges": [
-        { "src": "{{FLAG_KR_URL}}", "alt": "대한민국 국기", "label": "자체 개발", "kind": "flag" }
-      ],
+      "badges": [],
       "title": "신형 전동 슬라이딩 방열도어 개발·생산",
       "detail": "BLDC 150W 모터·SUS 0.8T·최대 4,500×4,000mm 규격의 차세대 전동 슬라이딩 방열문 라인업 구축."
     },

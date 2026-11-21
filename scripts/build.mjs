@@ -49,7 +49,6 @@ const sourceMedia = [
   ['ci/ci-gamaco.png', 'CI_GAMACO_URL'],
   ['ci/ci-incheon-cci.png', 'CI_INCHEON_CCI_URL'],
   ['ci/ci-kicox.svg', 'CI_KICOX_URL'],
-  ['ci/flag-kr.svg', 'FLAG_KR_URL'],
   ['ci/flag-it.svg', 'FLAG_IT_URL']
 ];
 

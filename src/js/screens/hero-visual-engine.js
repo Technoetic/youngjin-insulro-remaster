@@ -1,11 +1,28 @@
 const SCENE_DURATION_MS = 6800;
 
+function formatCounterValue(value, { decimals = 0, comma = false, prefix = '' }) {
+  const fixed = decimals > 0 ? value.toFixed(decimals) : String(Math.round(value));
+  let formatted = fixed;
+  if (comma) {
+    const [intPart, decPart] = fixed.split('.');
+    const sign = intPart.startsWith('-') ? '-' : '';
+    const digits = sign ? intPart.slice(1) : intPart;
+    const grouped = digits.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    formatted = decPart !== undefined ? `${sign}${grouped}.${decPart}` : `${sign}${grouped}`;
+  }
+  if (prefix && !formatted.startsWith('-') && !formatted.startsWith(prefix)) {
+    return `${prefix}${formatted}`;
+  }
+  return formatted;
+}
+
 export class HeroVisualEngine {
   #stage;
   #canvas;
   #ctx = null;
   #rafId = 0;
   #timerId = 0;
+  #counterRafs = new Set();
   #width = 0;
   #height = 0;
   #dpr = 1;
@@ -30,9 +47,13 @@ export class HeroVisualEngine {
     if (!this.#stage) return;
     const slides = this.#stage.querySelectorAll('[data-cinema-slide]');
     this.#sceneCount = Math.max(1, slides.length);
+
+    // Animate persistent hero chrome counters once on mount (top kicker, temp-axis, bottom KPI rail)
+    this.#animateCountersIn(this.#stage.querySelector('.cinema-top-strip'));
+    this.#animateCountersIn(this.#stage.querySelector('.cinema-bottom-rail'));
+
     this.#applyScene(0);
 
-    // Subtle film-reel indicator switching (optional, pure passive auto-cinema by default)
     const signal = this.#events.signal;
     this.#stage.querySelectorAll('[data-reel-dot]').forEach(dot => {
       dot.addEventListener(
@@ -78,6 +99,68 @@ export class HeroVisualEngine {
     this.#rafId = requestAnimationFrame(tick);
   }
 
+  #animateCountersIn(container) {
+    if (!container || this.#disposed) return;
+    const nodes = container.querySelectorAll('[data-count-to]');
+    if (!nodes.length) return;
+
+    nodes.forEach((el, idx) => {
+      const to = Number(el.dataset.countTo);
+      const from = Number(el.dataset.countFrom ?? 0);
+      const decimals = Number(el.dataset.countDecimals ?? 0);
+      const comma = el.dataset.countComma === 'true';
+      const prefix = el.dataset.countPrefix || '';
+      const duration = Math.max(300, Number(el.dataset.countDuration ?? 1100));
+      if (!Number.isFinite(to) || !Number.isFinite(from)) return;
+
+      const opts = { decimals, comma, prefix };
+      if (this.#reducedMotion) {
+        el.textContent = formatCounterValue(to, opts);
+        return;
+      }
+
+      if (el._counterRaf) {
+        cancelAnimationFrame(el._counterRaf);
+        this.#counterRafs.delete(el._counterRaf);
+      }
+
+      el.classList.remove('is-locked');
+      el.textContent = formatCounterValue(from, opts);
+      const delay = idx * 45;
+      const startTime = performance.now() + delay;
+
+      const step = now => {
+        if (this.#disposed) return;
+        if (now < startTime) {
+          const id = requestAnimationFrame(step);
+          el._counterRaf = id;
+          this.#counterRafs.add(id);
+          return;
+        }
+        const progress = Math.min(1, (now - startTime) / duration);
+        // Expo-out curve for crisp mechanical speedometer lock-in
+        const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+        const current = from + (to - from) * eased;
+        el.textContent = formatCounterValue(current, opts);
+
+        if (progress < 1) {
+          const id = requestAnimationFrame(step);
+          el._counterRaf = id;
+          this.#counterRafs.add(id);
+        } else {
+          el.textContent = formatCounterValue(to, opts);
+          el.classList.add('is-locked');
+          this.#counterRafs.delete(el._counterRaf);
+          el._counterRaf = 0;
+        }
+      };
+
+      const id = requestAnimationFrame(step);
+      el._counterRaf = id;
+      this.#counterRafs.add(id);
+    });
+  }
+
   #restartTimer() {
     if (this.#timerId) clearInterval(this.#timerId);
     if (this.#disposed || this.#reducedMotion || this.#sceneCount <= 1) return;
@@ -98,10 +181,12 @@ export class HeroVisualEngine {
       el.setAttribute('aria-hidden', String(!active));
     });
 
+    let activeCopy = null;
     this.#stage.querySelectorAll('[data-cinema-copy]').forEach((el, i) => {
       const active = i === index;
       el.classList.toggle('is-active', active);
       el.hidden = !active;
+      if (active) activeCopy = el;
     });
 
     this.#stage.querySelectorAll('[data-reel-dot]').forEach((el, i) => {
@@ -109,6 +194,10 @@ export class HeroVisualEngine {
       el.classList.toggle('is-active', active);
       el.setAttribute('aria-current', active ? 'true' : 'false');
     });
+
+    if (activeCopy) {
+      this.#animateCountersIn(activeCopy);
+    }
   }
 
   #resize() {
@@ -195,6 +284,8 @@ export class HeroVisualEngine {
     this.#disposed = true;
     if (this.#rafId) cancelAnimationFrame(this.#rafId);
     if (this.#timerId) clearInterval(this.#timerId);
+    for (const id of this.#counterRafs) cancelAnimationFrame(id);
+    this.#counterRafs.clear();
     this.#events.abort();
     this.#resizeObserver?.disconnect();
   }
